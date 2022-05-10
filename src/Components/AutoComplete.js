@@ -4,6 +4,8 @@ import axios from "axios";
 const AutoComplete = () => {
 	const [autoFill, setAutoFill] = useState("");
 	const [suggestions, setSuggestions] = useState([]);
+	const [selectedWord, setSelectedWord] = useState("");
+
 	useEffect(() => {
 		axios({
 			url: "https://api.datamuse.com/sug",
@@ -24,11 +26,9 @@ const AutoComplete = () => {
 		console.log(event.target.value);
 	};
 
-  const selectWord = (wordObj) => {
-    const selectedWord = wordObj.word;
-    console.log(selectedWord)
-
-  }
+	const handleSelection = (event) => {
+		setSelectedWord(event.target.innerText);
+	};
 
 	return (
 		<section>
@@ -41,7 +41,7 @@ const AutoComplete = () => {
 					onChange={(event) => {
 						handleChange(event);
 					}}
-					// value={''}
+					value={selectedWord}
 				/>
 
 				<button type="submit">Submit</button>
@@ -50,9 +50,9 @@ const AutoComplete = () => {
 				{autoFill !== ""
 					? suggestions.map((wordObj, index) => {
 							return (
-								<li key={index} onClick={() => selectWord(wordObj)}>
+								<option key={index} onClick={(event) => handleSelection(event)}>
 									{wordObj.word}
-								</li>
+								</option>
 							);
 					  })
 					: null}
