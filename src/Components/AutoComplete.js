@@ -6,6 +6,7 @@ const AutoComplete = () => {
 	const [suggestions, setSuggestions] = useState([]);
   const [userSubmit, setUserSubmit] = useState("");
   const [show, setShow] = useState(true);
+  const [wordCollection, setWordCollection] = useState([])
 
 	useEffect(() => {
 		axios({
@@ -33,7 +34,7 @@ const AutoComplete = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
+        setWordCollection(response.data);
 
       })
       .catch((error) => {
@@ -85,10 +86,20 @@ const AutoComplete = () => {
 								<option key={index} style={{display: show ? "block" : "none"}} onClick={() => handleSelection(wordObj)}>
 									{wordObj.word}
 								</option>
+
 							);
 					  })
 					: null}
 			</ul>
+      <div>
+        {wordCollection.map((wordCollection,index) => {
+          return (
+            <div key={index}>
+              {wordCollection.word}
+            </div>
+          )
+        })}
+      </div>
 		</section>
 	);
 };
