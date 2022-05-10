@@ -4,8 +4,6 @@ import axios from "axios";
 const AutoComplete = () => {
 	const [autoFill, setAutoFill] = useState("");
 	const [suggestions, setSuggestions] = useState([]);
-	const [selectedWord, setSelectedWord] = useState("");
-  // const [text, setText] = useState('');
 
 	useEffect(() => {
 		axios({
@@ -25,7 +23,6 @@ const AutoComplete = () => {
 	const handleChange = (event) => {
 		setAutoFill(event.target.value.trim());
 		console.log(event.target.value);
-    // setAutoFill(selectedWord);
 
 	};
 
