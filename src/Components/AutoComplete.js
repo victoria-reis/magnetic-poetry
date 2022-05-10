@@ -5,6 +5,7 @@ const AutoComplete = () => {
 	const [autoFill, setAutoFill] = useState("");
 	const [suggestions, setSuggestions] = useState([]);
   const [userSubmit, setUserSubmit] = useState("");
+  const [show, setShow] = useState(true);
 
 	useEffect(() => {
 		axios({
@@ -43,11 +44,13 @@ const AutoComplete = () => {
 	const handleChange = (event) => {
 		setAutoFill(event.target.value.trim());
 		console.log(event.target.value);
-
+    setShow(true);
 	};
 
 	const handleSelection = (wordObj) => {
     setAutoFill(wordObj.word);
+    setShow(false)
+
   };
 
   	const handleSubmit = (event) => {
@@ -79,7 +82,7 @@ const AutoComplete = () => {
 				{autoFill !== ""
 					? suggestions.map((wordObj, index) => {
 							return (
-								<option key={index} onClick={() => handleSelection(wordObj)}>
+								<option key={index} style={{display: show ? "block" : "none"}} onClick={() => handleSelection(wordObj)}>
 									{wordObj.word}
 								</option>
 							);
