@@ -5,6 +5,7 @@ const AutoComplete = () => {
 	const [autoFill, setAutoFill] = useState("");
 	const [suggestions, setSuggestions] = useState([]);
 	const [selectedWord, setSelectedWord] = useState("");
+  // const [text, setText] = useState('');
 
 	useEffect(() => {
 		axios({
@@ -24,11 +25,14 @@ const AutoComplete = () => {
 	const handleChange = (event) => {
 		setAutoFill(event.target.value.trim());
 		console.log(event.target.value);
+    // setAutoFill(selectedWord);
+
 	};
 
-	const handleSelection = (event) => {
-		setSelectedWord(event.target.innerText);
-	};
+	const handleSelection = (wordObj) => {
+    setAutoFill(wordObj.word);
+  };
+
 
 	return (
 		<section>
@@ -41,7 +45,7 @@ const AutoComplete = () => {
 					onChange={(event) => {
 						handleChange(event);
 					}}
-					value={selectedWord}
+					value={autoFill}
 				/>
 
 				<button type="submit">Submit</button>
@@ -50,7 +54,7 @@ const AutoComplete = () => {
 				{autoFill !== ""
 					? suggestions.map((wordObj, index) => {
 							return (
-								<option key={index} onClick={(event) => handleSelection(event)}>
+								<option key={index} onClick={() => handleSelection(wordObj)}>
 									{wordObj.word}
 								</option>
 							);
