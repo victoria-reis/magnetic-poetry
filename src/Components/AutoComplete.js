@@ -24,6 +24,12 @@ const AutoComplete = () => {
 		console.log(event.target.value);
 	};
 
+  const selectWord = (wordObj) => {
+    const selectedWord = wordObj.word;
+    console.log(selectedWord)
+
+  }
+
 	return (
 		<section>
 			<form>
@@ -35,7 +41,7 @@ const AutoComplete = () => {
 					onChange={(event) => {
 						handleChange(event);
 					}}
-					// value={""}
+					// value={''}
 				/>
 
 				<button type="submit">Submit</button>
@@ -44,7 +50,7 @@ const AutoComplete = () => {
 				{autoFill !== ""
 					? suggestions.map((wordObj, index) => {
 							return (
-								<li key={index} onClick={() => {}}>
+								<li key={index} onClick={() => selectWord(wordObj)}>
 									{wordObj.word}
 								</li>
 							);
