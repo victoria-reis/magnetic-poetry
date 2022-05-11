@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const GenerateWords = ({userSubmit, setUserSubmit, autoFill, setAutoFill}) => {
+const GenerateWords = ({userSubmit, setUserSubmit, autoFill}) => {
 
     const [wordCollection, setWordCollection] = useState([]);
     const [wordPoem, setWordPoem] = useState([]);
