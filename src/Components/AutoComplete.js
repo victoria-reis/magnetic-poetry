@@ -8,9 +8,9 @@ import Form from "./Form";
 const AutoComplete = () => {
 	const [autoFill, setAutoFill] = useState("");
 	const [suggestions, setSuggestions] = useState([]);
-  	const [userSubmit, setUserSubmit] = useState("");
-  	const [show, setShow] = useState(true);
-  	const [wordCollection, setWordCollection] = useState([])
+  const [userSubmit, setUserSubmit] = useState("");
+  const [show, setShow] = useState(true);
+  const [wordCollection, setWordCollection] = useState([])
 
 	useEffect(() => {
 		axios({
@@ -31,7 +31,7 @@ const AutoComplete = () => {
 		<section>
 			<Form setAutoFill={setAutoFill} setUserSubmit={setUserSubmit} setShow={setShow} autoFill={autoFill} show={show} AutoComplete={AutoComplete} suggestions={suggestions} />
 
-			<GenerateWords setWordCollection={setWordCollection} userSubmit={userSubmit} wordCollection={wordCollection} />		
+			<GenerateWords setWordCollection={setWordCollection} userSubmit={userSubmit} wordCollection={wordCollection} />
 		</section>
 	);
 };
