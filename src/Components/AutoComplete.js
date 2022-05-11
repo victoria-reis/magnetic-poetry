@@ -3,6 +3,7 @@ import axios from "axios";
 
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
+
 import firebase from "../firebase"
 import { getDatabase, ref, onValue, push } from "firebase/database";
 
@@ -60,6 +61,7 @@ const handleSubmit = (event) => {
   // reset the state to an empty string
   setUserInput("");
 };
+
 
 
   useEffect(() => {
@@ -121,6 +123,7 @@ const handleSubmit = (event) => {
       />
     </section>
   );
+
 };
 
 export default AutoComplete;

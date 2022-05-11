@@ -9,7 +9,9 @@ import GenerateWords from "./Components/GenerateWords";
 //styling
 import "./Styles/App.css";
 
+
 function App() {
+
 	return (
     <div className="App">
       <h1>test</h1>
