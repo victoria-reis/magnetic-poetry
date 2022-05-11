@@ -11,11 +11,19 @@ import "./Styles/App.css";
 
 function App() {
 	return (
-		<div className="App">
-			<h1>test</h1>
-			<AutoComplete />
-		</div>
-	);
+    <div className="App">
+      <h1>test</h1>
+      {/* <AutoComplete /> */}
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+      </ul>
+      <Routes>
+        <Route path="/" element={<AutoComplete />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
