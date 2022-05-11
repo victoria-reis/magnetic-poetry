@@ -1,6 +1,13 @@
-import "./Styles/App.css";
-import AutoComplete from "./Components/AutoComplete";
+//Modules
+import { useState } from "react";
+import { Link, Routes, Route } from 'react-router-dom';
 
+//Config
+import AutoComplete from "./Components/AutoComplete";
+import GenerateWords from "./Components/GenerateWords";
+
+//styling
+import "./Styles/App.css";
 
 function App() {
 	return (
