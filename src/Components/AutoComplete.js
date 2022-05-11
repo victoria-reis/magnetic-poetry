@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import firebase from "./firebase";
 
 const AutoComplete = () => {
 	const [autoFill, setAutoFill] = useState("");
