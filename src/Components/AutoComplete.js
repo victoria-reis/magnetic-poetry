@@ -18,6 +18,7 @@ const AutoComplete = () => {
 
   //pass the autofill as a parameter to display whatever is returned as a state
   useEffect(() => {
+    
     axios({
       url: "https://api.datamuse.com/sug",
       method: "GET",

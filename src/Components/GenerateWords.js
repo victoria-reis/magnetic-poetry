@@ -51,6 +51,19 @@ const GenerateWords = ({userSubmit}) => {
       
     };
 
+  const handleClear = (wordPoem) => {
+    wordPoem.preventDefault();
+    setWordPoem([])
+    console.log("setWordPoem", setWordPoem)
+
+  };
+
+  const handleOne = (words) => {
+    words.preventDefault();
+    setWordPoem([wordPoem.unshift()])
+
+  };
+
     //looping through 50 words that we get back from the api to display them on the page. 
     //2nd form below
     return (
@@ -97,6 +110,8 @@ const GenerateWords = ({userSubmit}) => {
             <button type="submit">
               Submit
             </button>
+            <button onClick={handleClear}>ClearAll</button>
+            <button onClick={handleOne}>Clear Last Word</button>
           </form>
         </div>
       </div>
