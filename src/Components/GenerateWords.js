@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import firebase from "../firebase";
-import { getDatabase, ref, onValue, push } from "firebase/database";
+import { getDatabase, ref, onValue, push, remove } from "firebase/database";
 
 const GenerateWords = ({userSubmit}) => {
     //suggested 50 words from the api call state
@@ -48,7 +48,7 @@ const GenerateWords = ({userSubmit}) => {
 
      for (let key in data) {
        // inside the loop, we push each book name to an array we already created inside the onValue() function called newState
-       newState.push(data[key]);
+       newState.push({ key: key, name: data[key] });
      }
      // here we use Firebase's .val() method to parse our database info the way we want it
      console.log(response.val());
@@ -81,6 +81,17 @@ const GenerateWords = ({userSubmit}) => {
       
     };
 
+    const handleRemovePoem = (poemId) => {
+      // here we create a reference to the database
+      // this time though, instead of pointing at the whole database, we make our dbRef point to the specific node of the book we want to remove
+      const database = getDatabase(firebase);
+      const dbRef = ref(database, `/${poemId}`);
+
+      // using the Firebase method remove(), we remove the node specific to the book ID
+      remove(dbRef);
+    };
+    
+
     //looping through 50 words that we get back from the api to display them on the page. 
     //2nd form below
     return (
@@ -88,8 +99,13 @@ const GenerateWords = ({userSubmit}) => {
         <ul className="poems">
           {poems.map((poem) => {
             return (
-              <li key={poem}>
-                <p>{poem}</p>
+              <li key={poem.key}>
+                <p>
+                  {poem.name} 
+                </p>
+                <button onClick={() => handleRemovePoem(poem.key)}>
+                  Remove
+                </button>
               </li>
             );
           })}
