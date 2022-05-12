@@ -4,6 +4,7 @@ import { Link, Routes, Route } from "react-router-dom";
 
 //Config
 import AutoComplete from "./Components/AutoComplete";
+import Gallery from "./Components/Gallery";
 // import GenerateWords from "./Components/GenerateWords";
 
 //styling
@@ -16,11 +17,15 @@ function App() {
 			{/* <AutoComplete /> */}
 			<ul>
 				<li>
-					<Link to="/">Home</Link>
+					<Link to="/">Gallery</Link>
+				</li>
+				<li>
+					<Link to="auto">Autocomplete</Link>
 				</li>
 			</ul>
 			<Routes>
-				<Route path="/" element={<AutoComplete />} />
+				<Route path="/" element={<Gallery />} />
+				<Route path="/auto" element={<AutoComplete />} />
 			</Routes>
 		</div>
 	);
