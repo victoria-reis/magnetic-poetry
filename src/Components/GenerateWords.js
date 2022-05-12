@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import firebase from "../firebase";
-import { getDatabase, ref, onValue, push, remove } from "firebase/database";
+import { getDatabase, ref, push } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 
 const GenerateWords = ({userSubmit}) => {
-    //suggested 50 words from the api call state
+  
+  let navigate = useNavigate();
+  
+  //suggested 50 words from the api call state
     const [wordCollection, setWordCollection] = useState([]);
     //the words that are clicked and are put into the 2nd input form
     const [wordPoem, setWordPoem] = useState([]);
@@ -48,7 +52,7 @@ const GenerateWords = ({userSubmit}) => {
         // reset the state to an empty string
         setWordPoem("");
 
-      
+        navigate('/');
     };
 
     //looping through 50 words that we get back from the api to display them on the page. 
