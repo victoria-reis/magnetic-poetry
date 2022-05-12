@@ -46,10 +46,10 @@ const GenerateWords = ({userSubmit}) => {
      const newState = [];
      const data = response.val();
 
-     for (let key in data) {
-       // inside the loop, we push each book name to an array we already created inside the onValue() function called newState
-       newState.push({ key: key, name: data[key] });
-     }
+      for (let key in data) {
+        // pushing the values from the object into our newState array
+        newState.push({ key: key, name: data[key].wordPoem });
+      }
      // here we use Firebase's .val() method to parse our database info the way we want it
      console.log(response.val());
      setPoems(newState);
@@ -73,7 +73,7 @@ const GenerateWords = ({userSubmit}) => {
        const dbRef = ref(database);
 
        //push whatever the user has typed
-        push(dbRef, wordPoem);
+        push(dbRef, {wordPoem: wordPoem});
 
         // reset the state to an empty string
         setWordPoem("");
@@ -101,6 +101,7 @@ const GenerateWords = ({userSubmit}) => {
             return (
               <li key={poem.key}>
                 <p>
+                  
                   {poem.name} 
                 </p>
                 <button onClick={() => handleRemovePoem(poem.key)}>
