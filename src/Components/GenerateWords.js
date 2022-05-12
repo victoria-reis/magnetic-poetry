@@ -64,8 +64,8 @@ const GenerateWords = ({userSubmit}) => {
 
   const handleOne = (words) => {
     words.preventDefault();
-    setWordPoem([wordPoem.unshift()])
-
+    setWordPoem(wordPoem.toString().split(" ").slice(0, -1).join(" "));
+    console.log(setWordPoem)
   };
 
     //looping through 50 words that we get back from the api to display them on the page. 
