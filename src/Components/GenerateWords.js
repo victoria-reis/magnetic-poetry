@@ -3,59 +3,6 @@ import axios from "axios";
 import firebase from "../firebase";
 import { getDatabase, ref, onValue, push } from "firebase/database";
 
-<<<<<<< Updated upstream
-const GenerateWords = ({
-	userSubmit,
-	setUserSubmit,
-	autoFill,
-	setAutoFill,
-}) => {
-	const [wordCollection, setWordCollection] = useState([]);
-	const [wordPoem, setWordPoem] = useState([]);
-
-	useEffect(() => {
-		axios({
-			url: "https://api.datamuse.com/words",
-			method: "GET",
-			dataResponse: "JSON",
-			params: {
-				topics: userSubmit,
-				max: 50,
-			},
-		})
-			.then((response) => {
-				setWordCollection(response.data);
-				console.log(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, [userSubmit]);
-
-	const handleSelection = (wordCollection) => {
-		setWordPoem([wordPoem + wordCollection.word + " "]);
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-
-		setUserSubmit(autoFill);
-
-		setAutoFill("");
-	};
-
-	return (
-		<div>
-			{wordCollection.map((wordCollection, index) => {
-				return (
-					<div key={index} onClick={() => handleSelection(wordCollection)}>
-						{wordCollection.word}
-					</div>
-				);
-			})}
-
-			{/* {
-=======
 const GenerateWords = ({userSubmit}) => {
     //suggested 50 words from the api call state
     const [wordCollection, setWordCollection] = useState([]);
@@ -172,24 +119,7 @@ const GenerateWords = ({userSubmit}) => {
                   <div>No words found</div>
                 )
                 } */}
-<<<<<<< Updated upstream
-			<div>
-				<form
-					onSubmit={(event) => {
-						handleSubmit(event);
-					}}
-				>
-					<input type="text" id="poem" value={wordPoem} />
 
-					<button type="submit">Submit</button>
-				</form>
-			</div>
-		</div>
-	);
-};
-
-export default GenerateWords;
-=======
         <div>
           <form
             onSubmit={(event) => {
@@ -213,4 +143,4 @@ export default GenerateWords;
         }
 
 export default GenerateWords
->>>>>>> Stashed changes
+
