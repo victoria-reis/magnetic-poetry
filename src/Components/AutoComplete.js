@@ -18,30 +18,28 @@ const AutoComplete = () => {
 	const [wordCollection, setWordCollection] = useState([]);
 	//the words that are clicked and are put into the 2nd input form
 	const [wordPoem, setWordPoem] = useState([]);
-  //error handling state when it is false there is no error
-  //when it is true the error message will appear
-  const [errorState, setErrorState] = useState(false)
+	const [errorState, setErrorState] = useState(false);
 
 	//pass the autofill as a parameter to display whatever is returned as a state
 	useEffect(() => {
-    if (autoFill !== '') {
-		axios({
-			url: "https://api.datamuse.com/sug",
-			method: "GET",
-			dataResponse: "JSON",
-			params: {
-				s: autoFill,
-				max: 10,
-			},
-		})
-			.then((response) => {
-				setSuggestions(response.data);
-				console.log("suggestions",suggestions);
+		if (autoFill !== "") {
+			axios({
+				url: "https://api.datamuse.com/sug",
+				method: "GET",
+				dataResponse: "JSON",
+				params: {
+					s: autoFill,
+					max: 10,
+				},
 			})
-			.catch((error) => {
-				console.log(error);
-			});
-    }
+				.then((response) => {
+					setSuggestions(response.data);
+					console.log(response.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	}, [autoFill]);
 
 	return (
@@ -54,8 +52,8 @@ const AutoComplete = () => {
 				show={show}
 				AutoComplete={AutoComplete}
 				suggestions={suggestions}
-        setErrorState={setErrorState}
-        userSubmit={userSubmit}
+				setErrorState={setErrorState}
+				userSubmit={userSubmit}
 			/>
 
 			<GenerateWords
@@ -64,8 +62,8 @@ const AutoComplete = () => {
 				wordCollection={wordCollection}
 				setWordPoem={setWordPoem}
 				wordPoem={wordPoem}
-        errorState={errorState}
-        setErrorState={setErrorState}
+				errorState={errorState}
+				setErrorState={setErrorState}
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />

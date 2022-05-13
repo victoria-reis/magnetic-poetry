@@ -41,7 +41,6 @@ const SuffixPrefixWords = [
 	"neo",
 	"mono",
 	"mini",
-	"mis",
 	"mega",
 	"mal",
 	"kilo",
@@ -56,18 +55,15 @@ const SuffixPrefixWords = [
 	"ate",
 	"ise",
 	"trans",
-	"sub",
 	"pre",
 	"inter",
 	"fore",
 	"de",
 	"co",
 	"be",
-	"out",
 	"mis",
 	"un",
 	"over",
-	"re",
 ];
 
 export default SuffixPrefixWords;

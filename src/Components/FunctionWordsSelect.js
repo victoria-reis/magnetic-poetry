@@ -1,5 +1,5 @@
-import FunctionWords from "./Data/FunctionWords";
-import SuffixPrefixWords from "./Data/SuffixPrefixWords";
+import FunctionWords from "../Data/FunctionWords";
+import SuffixPrefixWords from "../Data/SuffixPrefixWords";
 import { useState } from "react";
 
 const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
@@ -31,9 +31,17 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 					handleFWordSubmit(event);
 				}}
 			>
+				<label htmlFor="functionWords">
+					Select a function word. Example: they, somebody, don't, above, etc.
+				</label>
 				<select name="functionWords" id="functionWords">
+					<option value="">Select a function word</option>
 					{FunctionWords.sort().map((word, index) => {
-						return <option key={index} value={word}>{word}</option>;
+						return (
+							<option key={index} value={word}>
+								{word}
+							</option>
+						);
 					})}
 				</select>
 				<button type="submit">Generate piece</button>
@@ -43,9 +51,17 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 					handleSuffixPrefixSubmit(event);
 				}}
 			>
-				<select name="suffixPrefix" id="suffixprefix">
+				<label htmlFor="suffixPrefix">
+					Select a suffix or prefix. Example: un-, auto-, -able, -cy, etc.
+				</label>
+				<select name="suffixPrefix" id="suffixPrefix">
+					<option value="">Select a prefix or suffix</option>
 					{SuffixPrefixWords.sort().map((word, index) => {
-						return <option key={index} value={word}>{word}</option>;
+						return (
+							<option key={index} value={word}>
+								{word}
+							</option>
+						);
 					})}
 				</select>
 				<button type="submit">Generate piece</button>

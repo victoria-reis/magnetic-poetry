@@ -10,19 +10,19 @@ const Form = ({
 }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (userSubmit.length === 0){
-			setErrorState(true)
+		if (userSubmit === "") {
+			setErrorState(true);
 		}
 
 		setUserSubmit(autoFill);
 
 		setAutoFill("");
+
+		console.log("userSubmit", userSubmit);
 	};
 
 	const handleChange = (event) => {
-		if (autoFill  !== "") {
-			setErrorState(false)
-		}
+		setErrorState(false);
 		setAutoFill(event.target.value.trim());
 		setShow(true);
 	};
@@ -37,7 +37,6 @@ const Form = ({
 			<form
 				onSubmit={(event) => {
 					handleSubmit(event);
-					console.log("userSubmit", userSubmit)
 				}}
 			>
 				<label htmlFor="search">Search</label>
@@ -49,6 +48,8 @@ const Form = ({
 						handleChange(event);
 					}}
 					value={autoFill}
+					pattern="[a-zA-z]+"
+					placeholder="Start typing a word..."
 				/>
 
 				<button type="submit">Submit</button>
@@ -62,7 +63,7 @@ const Form = ({
 										style={{ display: show ? "block" : "none" }}
 										onClick={() => handleSelection(wordObj)}
 										value={wordObj.word}
-										className='color'
+										className="color"
 									>
 										{wordObj.word}
 									</option>

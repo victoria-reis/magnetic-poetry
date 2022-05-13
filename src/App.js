@@ -13,14 +13,14 @@ import "./Styles/App.css";
 function App() {
 	return (
 		<div className="App">
-			<h1>test</h1>
+			<h1>Refrigeration Versification</h1>
 			{/* <AutoComplete /> */}
 			<ul>
 				<li>
 					<Link to="/">Gallery</Link>
 				</li>
 				<li>
-					<Link to="auto">Autocomplete</Link>
+					<Link to="auto">Create a poem</Link>
 				</li>
 			</ul>
 			<Routes>

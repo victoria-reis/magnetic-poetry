@@ -1,5 +1,9 @@
 // Setup Snippet
-@import './partials/setup';
+@import "./partials/setup";
 
 // Base Styles
-@import './partials/typography';
+@import "./partials/typography";
+
+// generate words styles
+@import "./partials/50wordsPieces";
+@import "./partials/poemInput";

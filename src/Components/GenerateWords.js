@@ -14,23 +14,23 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 
 	//the topics returned whatever word the user has clicked and suggests a list of words based on that
 	useEffect(() => {
-    if (userSubmit !== '') {
-		axios({
-			url: "https://api.datamuse.com/words",
-			method: "GET",
-			dataResponse: "JSON",
-			params: {
-				topics: userSubmit,
-				max: 50,
-			},
-		})
-			.then((response) => {
-				setWordCollection(response.data);
+		if (userSubmit !== "") {
+			axios({
+				url: "https://api.datamuse.com/words",
+				method: "GET",
+				dataResponse: "JSON",
+				params: {
+					topics: userSubmit,
+					max: 50,
+				},
 			})
-			.catch((error) => {
-				console.log(error);
-			});
-    }
+				.then((response) => {
+					setWordCollection(response.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	}, [userSubmit]);
 
 	//a function that will detect what is being clicked and adds a word to the empty array.
@@ -38,7 +38,6 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 		//empty array + what was clicked + empty space concat
 		setWordPoem([wordPoem + wordCollection.word + " "]);
 	};
-
 
 	//submit button for the 2nd form that will push the poem to firebase.
 	const handleSubmit = (event) => {
@@ -67,65 +66,92 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 		console.log(setWordPoem);
 	};
 
+	// styling function to add class to 50 words
+	const rotationRandomizer = () => {
+		const randomNum = Math.floor(Math.random() * 10);
+		const style1 = "style-1";
+		const style2 = "style-2";
+		const style3 = "style-3";
+		const style4 = "style-4";
+		const style5 = "style-5";
+		if (randomNum <= 2) {
+			return `magnetic ${style1}`;
+			// console.log(randomNum, style1);
+		} else if (randomNum > 2 && randomNum <= 4) {
+			return `magnetic ${style2}`;
+			// console.log(randomNum, style2);
+		} else if (randomNum > 4 && randomNum <= 6) {
+			return `magnetic ${style3}`;
+			// console.log(randomNum, style3);
+		} else if (randomNum > 6 && randomNum <= 8) {
+			return `magnetic ${style4}`;
+			// console.log(randomNum, style2);
+		} else if (randomNum > 8) {
+			return `magnetic ${style5}`;
+			// console.log(randomNum, style2);
+		}
+	};
+
 	//looping through 50 words that we get back from the api to display them on the page.
 	//2nd form below
 	return (
 		<div>
-      {errorState ? <p className='errP'>no data found</p> : <p>null=good</p>}
-      
-      {
-        
-        wordCollection.map((wordCollection, index) => {
-          return (
-            <div key={index} onClick={() => handleSelection(wordCollection)}>
-              {wordCollection.word}
-              {console.log("wordCollection", wordCollection.word)}
-            </div>
-          )
-        })
-        }
-      {wordCollection !== '' ? wordCollection.word : <p>error</p>}
+			{errorState ? <p className="errP">no data found</p> : <p>null=good</p>}
+
+			{wordCollection.length !== 0 ? (
+				wordCollection.map((wordCollection, index) => {
+					return (
+						<div
+							key={index}
+							onClick={() => handleSelection(wordCollection)}
+							className={rotationRandomizer()}
+						>
+							{wordCollection.word}
+						</div>
+					);
+				})
+			) : (
+				<p>error</p>
+			)}
+
 			{/* {
-          wordCollection.length !== 0 && autoFill === ""
-            ?
-            wordCollection.map((wordCollection, index) => {
-                return (
-                  <div key={index} onClick={() => handleSelection(wordCollection)}>
-                    {wordCollection.word}
-                  </div>
-                );
-              })
-            :null
-            (
-              <div>No words found</div>
-            )
-          } */}
 
-        <div>
-          <form
-            onSubmit={(event) => {
-              handleSubmit(event);
-            }}        
-          >
-            <input
-              className="bottomForm"
-              type="text"
-              id="poem"
-              value={wordPoem}
-              onChange={handleSelection}
-              placeholder='Do not type in here'
-            />
+              wordCollection.length !== 0 && autoFill === ""
+                ?
+                wordCollection.map((wordCollection, index) => {
+                    return (
+                      <div key={index} onClick={() => handleSelection(wordCollection)}>
+                        {wordCollection.word}
+                      </div>
+                    );
+                  })
+                :null
+                (
+                  <div>No words found</div>
+                )
+                } */}
 
-            <button type="submit">
-              Submit
-            </button>
-            <button onClick={handleClear}>ClearAll</button>
-            <button onClick={handleOne}>Clear Last Word</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
+			<div>
+				<form
+					onSubmit={(event) => {
+						handleSubmit(event);
+					}}
+				>
+					<textarea
+						id="poem"
+						value={wordPoem}
+						className="poemBox"
+						onChange={handleSelection}
+						placeholder="Select the words above to create a poem!"
+					/>
 
-export default GenerateWords
+					<button type="submit">Submit</button>
+					<button onClick={handleClear}>ClearAll</button>
+					<button onClick={handleOne}>Clear Last Word</button>
+				</form>
+			</div>
+		</div>
+	);
+};
 
+export default GenerateWords;
