@@ -18,9 +18,11 @@ const AutoComplete = () => {
 	const [wordCollection, setWordCollection] = useState([]);
 	//the words that are clicked and are put into the 2nd input form
 	const [wordPoem, setWordPoem] = useState([]);
+  const [errorState, setErrorState] = useState(false)
 
 	//pass the autofill as a parameter to display whatever is returned as a state
 	useEffect(() => {
+    if (autoFill !== '') {
 		axios({
 			url: "https://api.datamuse.com/sug",
 			method: "GET",
@@ -37,6 +39,7 @@ const AutoComplete = () => {
 			.catch((error) => {
 				console.log(error);
 			});
+    }
 	}, [autoFill]);
 
 	return (
@@ -49,6 +52,8 @@ const AutoComplete = () => {
 				show={show}
 				AutoComplete={AutoComplete}
 				suggestions={suggestions}
+        setErrorState={setErrorState}
+        userSubmit={userSubmit}
 			/>
 
 			<GenerateWords
@@ -57,6 +62,8 @@ const AutoComplete = () => {
 				wordCollection={wordCollection}
 				setWordPoem={setWordPoem}
 				wordPoem={wordPoem}
+        errorState={errorState}
+        setErrorState={setErrorState}
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />

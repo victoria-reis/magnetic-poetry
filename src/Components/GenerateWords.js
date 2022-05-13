@@ -14,6 +14,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
 
 	//the topics returned whatever word the user has clicked and suggests a list of words based on that
 	useEffect(() => {
+    if (userSubmit !== '') {
 		axios({
 			url: "https://api.datamuse.com/words",
 			method: "GET",
@@ -29,6 +30,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
 			.catch((error) => {
 				console.log(error);
 			});
+    }
 	}, [userSubmit]);
 
 	//a function that will detect what is being clicked and adds a word to the empty array.
@@ -69,13 +71,18 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
 	//2nd form below
 	return (
 		<div>
-			{wordCollection.map((wordCollection, index) => {
-				return (
-					<div key={index} onClick={() => handleSelection(wordCollection)}>
-						{wordCollection.word}
-					</div>
-				);
-			})}
+      {errorState ? <p className='errP'>no data found</p> : <p>null=good</p>}
+
+      {wordCollection.length !== 0 ?
+        wordCollection.map((wordCollection, index) => {
+          return (
+            <div key={index} onClick={() => handleSelection(wordCollection)}>
+              {wordCollection.word}
+            </div>
+          )
+
+        })
+        : <p>error</p>}
 
 			{/* {
 >>>>>>> Stashed changes
@@ -94,26 +101,31 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
                 )
                 } */}
 
-			<div>
-				<form
-					onSubmit={(event) => {
-						handleSubmit(event);
-					}}
-				>
-					<input
-						type="text"
-						id="poem"
-						value={wordPoem}
-						onChange={handleSelection}
-					/>
+        <div>
+          <form
+            onSubmit={(event) => {
+              handleSubmit(event);
+            }}
+            
+          >
 
-					<button type="submit">Submit</button>
-					<button onClick={handleClear}>ClearAll</button>
-					<button onClick={handleOne}>Clear Last Word</button>
-				</form>
-			</div>
-		</div>
-	);
-};
+            <input
+              type="text"
+              id="poem"
+              value={wordPoem}
+              onChange={handleSelection}
+            />
 
-export default GenerateWords;
+            <button type="submit">
+              Submit
+            </button>
+            <button onClick={handleClear}>ClearAll</button>
+            <button onClick={handleOne}>Clear Last Word</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+export default GenerateWords
+
