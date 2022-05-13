@@ -3,56 +3,65 @@ import axios from "axios";
 
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
+import FunctionWordsSelect from "./FunctionWordsSelect";
 
 const AutoComplete = () => {
-  //state for input field
-  const [autoFill, setAutoFill] = useState("");
-  //autocomplete feature state, with options that drop down
-  const [suggestions, setSuggestions] = useState([]);
-  //textbox submit for the input field
-  const [userSubmit, setUserSubmit] = useState("");
-  //hiding the suggestions/dropdown 
-  const [show, setShow] = useState(true);
-  //state for 50 words from 2nd api call
-  const [wordCollection, setWordCollection] = useState([]);
+	//state for input field
+	const [autoFill, setAutoFill] = useState("");
+	//autocomplete feature state, with options that drop down
+	const [suggestions, setSuggestions] = useState([]);
+	//textbox submit for the input field
+	const [userSubmit, setUserSubmit] = useState("");
+	//hiding the suggestions/dropdown
+	const [show, setShow] = useState(true);
+	//state for 50 words from 2nd api call
+	const [wordCollection, setWordCollection] = useState([]);
+	//the words that are clicked and are put into the 2nd input form
+	const [wordPoem, setWordPoem] = useState([]);
 
-  //pass the autofill as a parameter to display whatever is returned as a state
-  useEffect(() => {
-    
-    axios({
-      url: "https://api.datamuse.com/sug",
-      method: "GET",
-      dataResponse: "JSON",
-      params: {
-        s: autoFill,
-        max: 10,
-      },
-    }).then((response) => {
-      setSuggestions(response.data);
-      console.log(response.data);
-    });
-  }, [autoFill]);
+	//pass the autofill as a parameter to display whatever is returned as a state
+	useEffect(() => {
+		axios({
+			url: "https://api.datamuse.com/sug",
+			method: "GET",
+			dataResponse: "JSON",
+			params: {
+				s: autoFill,
+				max: 10,
+			},
+		})
+			.then((response) => {
+				setSuggestions(response.data);
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, [autoFill]);
 
-  return (
-    <section>
-      <Form
-        setAutoFill={setAutoFill}
-        setUserSubmit={setUserSubmit}
-        setShow={setShow}
-        autoFill={autoFill}
-        show={show}
-        AutoComplete={AutoComplete}
-        suggestions={suggestions}
-      />
+	return (
+		<section>
+			<Form
+				setAutoFill={setAutoFill}
+				setUserSubmit={setUserSubmit}
+				setShow={setShow}
+				autoFill={autoFill}
+				show={show}
+				AutoComplete={AutoComplete}
+				suggestions={suggestions}
+			/>
 
-      <GenerateWords
-        setWordCollection={setWordCollection}
-        userSubmit={userSubmit}
-        wordCollection={wordCollection}
-      />
-    </section>
-  );
+			<GenerateWords
+				setWordCollection={setWordCollection}
+				userSubmit={userSubmit}
+				wordCollection={wordCollection}
+				setWordPoem={setWordPoem}
+				wordPoem={wordPoem}
+			/>
+
+			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
+		</section>
+	);
 };
 
 export default AutoComplete;
-
