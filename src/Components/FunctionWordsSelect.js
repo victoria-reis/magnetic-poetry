@@ -32,8 +32,8 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 				}}
 			>
 				<select name="functionWords" id="functionWords">
-					{FunctionWords.sort().map((word) => {
-						return <option value={word}>{word}</option>;
+					{FunctionWords.sort().map((word, index) => {
+						return <option key={index} value={word}>{word}</option>;
 					})}
 				</select>
 				<button type="submit">Generate piece</button>
@@ -44,8 +44,8 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 				}}
 			>
 				<select name="suffixPrefix" id="suffixprefix">
-					{SuffixPrefixWords.sort().map((word) => {
-						return <option value={word}>{word}</option>;
+					{SuffixPrefixWords.sort().map((word, index) => {
+						return <option key={index} value={word}>{word}</option>;
 					})}
 				</select>
 				<button type="submit">Generate piece</button>

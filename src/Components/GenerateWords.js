@@ -4,7 +4,7 @@ import firebase from "../firebase";
 import { getDatabase, ref, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
-const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
+const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 	let navigate = useNavigate();
 
 	//suggested 50 words from the api call state
@@ -38,7 +38,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
 		//empty array + what was clicked + empty space concat
 		setWordPoem([wordPoem + wordCollection.word + " "]);
 	};
-	console.log(wordPoem);
+
 
 	//submit button for the 2nd form that will push the poem to firebase.
 	const handleSubmit = (event) => {
@@ -72,48 +72,48 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem }) => {
 	return (
 		<div>
       {errorState ? <p className='errP'>no data found</p> : <p>null=good</p>}
-
-      {wordCollection.length !== 0 ?
+      
+      {
+        
         wordCollection.map((wordCollection, index) => {
           return (
             <div key={index} onClick={() => handleSelection(wordCollection)}>
               {wordCollection.word}
+              {console.log("wordCollection", wordCollection.word)}
             </div>
           )
-
         })
-        : <p>error</p>}
-
+        }
+      {wordCollection !== '' ? wordCollection.word : <p>error</p>}
 			{/* {
->>>>>>> Stashed changes
-              wordCollection.length !== 0 && autoFill === ""
-                ?
-                wordCollection.map((wordCollection, index) => {
-                    return (
-                      <div key={index} onClick={() => handleSelection(wordCollection)}>
-                        {wordCollection.word}
-                      </div>
-                    );
-                  })
-                :null
-                (
-                  <div>No words found</div>
-                )
-                } */}
+          wordCollection.length !== 0 && autoFill === ""
+            ?
+            wordCollection.map((wordCollection, index) => {
+                return (
+                  <div key={index} onClick={() => handleSelection(wordCollection)}>
+                    {wordCollection.word}
+                  </div>
+                );
+              })
+            :null
+            (
+              <div>No words found</div>
+            )
+          } */}
 
         <div>
           <form
             onSubmit={(event) => {
               handleSubmit(event);
-            }}
-            
+            }}        
           >
-
             <input
+              className="bottomForm"
               type="text"
               id="poem"
               value={wordPoem}
               onChange={handleSelection}
+              placeholder='Do not type in here'
             />
 
             <button type="submit">

@@ -67,7 +67,7 @@ const Form = ({
 										{wordObj.word}
 									</option>
 								);
-						  })
+							})
 						: null}
 				</div>
 			</form>

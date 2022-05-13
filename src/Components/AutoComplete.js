@@ -18,6 +18,8 @@ const AutoComplete = () => {
 	const [wordCollection, setWordCollection] = useState([]);
 	//the words that are clicked and are put into the 2nd input form
 	const [wordPoem, setWordPoem] = useState([]);
+  //error handling state when it is false there is no error
+  //when it is true the error message will appear
   const [errorState, setErrorState] = useState(false)
 
 	//pass the autofill as a parameter to display whatever is returned as a state
@@ -34,7 +36,7 @@ const AutoComplete = () => {
 		})
 			.then((response) => {
 				setSuggestions(response.data);
-				console.log(response.data);
+				console.log("suggestions",suggestions);
 			})
 			.catch((error) => {
 				console.log(error);
