@@ -12,21 +12,23 @@ import "./Styles/App.css";
 
 function App() {
 	return (
-		<div className="App">
-			<h1>Refrigeration Versification</h1>
-			{/* <AutoComplete /> */}
-			<ul>
-				<li>
-					<Link to="/">Gallery</Link>
-				</li>
-				<li>
-					<Link to="auto">Create a poem</Link>
-				</li>
-			</ul>
-			<Routes>
-				<Route path="/" element={<Gallery />} />
-				<Route path="/auto" element={<AutoComplete />} />
-			</Routes>
+		<div className="App">	
+			<div className="wrapper">
+				<h1>Refrigeration Versification</h1>
+				{/* <AutoComplete /> */}
+				<ul className="navBar">
+					<li>
+						<Link to="/">Gallery</Link>
+					</li>
+					<li>
+						<Link to="auto">Create a poem</Link>
+					</li>
+				</ul>
+				<Routes>
+					<Route path="/" element={<Gallery />} />
+					<Route path="/auto" element={<AutoComplete />} />
+				</Routes>
+			</div>
 		</div>
 	);
 }

@@ -246,6 +246,35 @@ body {
   color: blueviolet;
 }
 
+*,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
 .magnetic {
   position: relative;
   z-index: 0;
@@ -297,4 +326,25 @@ body {
   overflow-wrap: anywhere;
   resize: none;
   line-height: 40px;
+  pointer-events: none;
+}
+
+.poems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.poems li {
+  width: 40%;
+  padding: 20px;
+  border: 1px solid green;
+  margin: 20px;
+  line-height: 30px;
+}
+.poems button {
+  padding: 5px 20px;
+  border: none;
+  background-color: antiquewhite;
 }

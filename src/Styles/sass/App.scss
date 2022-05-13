@@ -3,7 +3,11 @@
 
 // Base Styles
 @import "./partials/typography";
+@import "./partials/baseStyles";
 
 // generate words styles
 @import "./partials/50wordsPieces";
 @import "./partials/poemInput";
+
+//gallery page styles
+@import "./partials/galleryPage"

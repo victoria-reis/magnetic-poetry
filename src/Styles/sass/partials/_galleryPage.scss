@@ -1,0 +1,17 @@
+.poems {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        width: 40%;
+        padding: 20px;
+        border: 1px solid green;
+        margin: 20px;
+        line-height: 30px;
+    }
+    button{
+        padding: 5px 20px;
+        border: none;
+        background-color: antiquewhite;
+    }
+
+}
