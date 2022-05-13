@@ -1,4 +1,5 @@
 .poemBox {
+	display: none;
 	border: none;
 	padding: 20px;
 	margin: 10px;
@@ -10,4 +11,12 @@
 	line-height: 40px;
 	// word-spacing: 40px;
 	pointer-events: none;
+	text-decoration: solid;
+}
+
+.poemDisplay {
+	margin: 0 auto;
+	width: 80%;
+	height: 300px;
+	background-color: #999;
 }

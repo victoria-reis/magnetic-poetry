@@ -3,6 +3,7 @@ import axios from "axios";
 import firebase from "../firebase";
 import { getDatabase, ref, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
+import { rotationRandomizer } from "./Other";
 
 const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 	let navigate = useNavigate();
@@ -62,58 +63,37 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 
 	const handleOne = (words) => {
 		words.preventDefault();
-		setWordPoem(wordPoem.toString().split(" ").slice(0, -1).join(" "));
-		console.log(setWordPoem);
+		setWordPoem(() => {
+			// wordPoem.toString().split(" ").slice(0, -1).join(" ")
+			if (wordPoem !== []) {
+				const text = wordPoem[0].trim().split(" ");
+				text.pop();
+				return [text.join(" ")];
+			}
+		});
 	};
-
-	// styling function to add class to 50 words
-	const rotationRandomizer = () => {
-		const randomNum = Math.floor(Math.random() * 10);
-		const style1 = "style-1";
-		const style2 = "style-2";
-		const style3 = "style-3";
-		const style4 = "style-4";
-		const style5 = "style-5";
-		if (randomNum <= 2) {
-			return `magnetic ${style1}`;
-			// console.log(randomNum, style1);
-		} else if (randomNum > 2 && randomNum <= 4) {
-			return `magnetic ${style2}`;
-			// console.log(randomNum, style2);
-		} else if (randomNum > 4 && randomNum <= 6) {
-			return `magnetic ${style3}`;
-			// console.log(randomNum, style3);
-		} else if (randomNum > 6 && randomNum <= 8) {
-			return `magnetic ${style4}`;
-			// console.log(randomNum, style2);
-		} else if (randomNum > 8) {
-			return `magnetic ${style5}`;
-			// console.log(randomNum, style2);
-		}
-	};
-
 	//looping through 50 words that we get back from the api to display them on the page.
 	//2nd form below
 	return (
-		<div>
+		<>
 			{errorState ? <p className="errP">no data found</p> : <p>null=good</p>}
-
-			{wordCollection.length !== 0 ? (
-				wordCollection.map((wordCollection, index) => {
-					return (
-						<div
-							key={index}
-							onClick={() => handleSelection(wordCollection)}
-							className={rotationRandomizer()}
-						>
-							{wordCollection.word}
-						</div>
-					);
-				})
-			) : (
-				<p>error</p>
-			)}
-
+			<ul className="wordCollection">
+				{wordCollection.length !== 0 ? (
+					wordCollection.map((wordCollection, index) => {
+						return (
+							<li
+								key={index}
+								onClick={() => handleSelection(wordCollection)}
+								className={rotationRandomizer()}
+							>
+								{wordCollection.word}
+							</li>
+						);
+					})
+				) : (
+					<p>error</p>
+				)}
+			</ul>
 			{/* {
 
               wordCollection.length !== 0 && autoFill === ""
@@ -137,7 +117,20 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 						handleSubmit(event);
 					}}
 				>
-					<textarea
+					<div className="poemDisplay">
+						{wordPoem[0]
+							? wordPoem[0]
+									.trim()
+									.split(" ")
+									.map((word) => {
+										console.log(word);
+										return <p className="magnetic">{word}</p>;
+									})
+							: null}
+					</div>
+
+					{/* this input is displayed none so we can style the words as magnetics*/}
+					<input
 						id="poem"
 						value={wordPoem}
 						className="poemBox"
@@ -150,7 +143,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 					<button onClick={handleOne}>Clear Last Word</button>
 				</form>
 			</div>
-		</div>
+		</>
 	);
 };
 

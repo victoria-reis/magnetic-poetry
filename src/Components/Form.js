@@ -33,28 +33,31 @@ const Form = ({
 	};
 
 	return (
-		<div>
+		<>
+			<h2>Create your own poem!</h2>
+			<h3>First, type a word and we will search for related ones.</h3>
 			<form
 				onSubmit={(event) => {
 					handleSubmit(event);
 				}}
+				className="searchForm"
 			>
-				<label htmlFor="search">Search</label>
+				<label htmlFor="search" className="sr-only">
+					Search for a word
+				</label>
+				<div className="inputOptionsContainer">
+					<input
+						type="search"
+						id="search"
+						onChange={(event) => {
+							handleChange(event);
+						}}
+						// className="searchInput"
+						value={autoFill}
+						pattern="[a-zA-z]+"
+						placeholder="Start typing a word..."
+					/>
 
-				<input
-					type="search"
-					id="search"
-					onChange={(event) => {
-						handleChange(event);
-					}}
-					value={autoFill}
-					pattern="[a-zA-z]+"
-					placeholder="Start typing a word..."
-				/>
-
-				<button type="submit">Submit</button>
-
-				<div>
 					{autoFill !== ""
 						? suggestions.map((wordObj, index) => {
 								return (
@@ -64,15 +67,18 @@ const Form = ({
 										onClick={() => handleSelection(wordObj)}
 										value={wordObj.word}
 										className="color"
+										tabIndex="0"
 									>
 										{wordObj.word}
 									</option>
 								);
-							})
+						  })
 						: null}
 				</div>
+
+				<button type="submit">Search</button>
 			</form>
-		</div>
+		</>
 	);
 };
 
