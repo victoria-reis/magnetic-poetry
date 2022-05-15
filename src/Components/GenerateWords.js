@@ -3,6 +3,7 @@ import axios from "axios";
 import firebase from "../firebase";
 import { getDatabase, ref, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
+import { rotationRandomizer } from "./Other";
 
 
 const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
@@ -73,8 +74,14 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 
 	const handleOne = (words) => {
 		words.preventDefault();
-		setWordPoem(wordPoem.toString().split(" ").slice(0, -1).join(" "));
-		console.log(setWordPoem);
+		setWordPoem(() => {
+			// wordPoem.toString().split(" ").slice(0, -1).join(" ")
+			if (wordPoem !== []) {
+				const text = wordPoem[0].trim().split(" ");
+				text.pop();
+				return [text.join(" ")];
+			}
+		});
 	};
 
 	// styling function to add class to 50 words
@@ -138,24 +145,26 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 
 			</div>
 			
-			{errorState ? <p className="errP">no data found</p> : <p>null=good</p>}
-
+			{/* {errorState ? <p className="errP">no data found</p> : <p>null=good</p>} */}
+			<ul className="wordCollection">
 			{wordCollection.length !== 0 ? (
 				wordCollection.map((wordCollection, index) => {
 					return (
-						<div
+						<li
 							key={index}
 							onClick={() => handleSelection(wordCollection)}
 							className={rotationRandomizer()}
 							style={{ color: colorChange}}
 						>
 							{wordCollection.word}
-						</div>
+						</li>
 					);
 				})
 			) : (
-				<p>error</p>
+				<p>Empty. Please type in words in the search bar.</p>
 			)}
+			</ul>
+			
 
 			{/* {
 
@@ -180,7 +189,20 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 						handleSubmit(event);
 					}}
 				>
-					<textarea
+					<div className="poemDisplay">
+						{wordPoem[0]
+							? wordPoem[0]
+									.trim()
+									.split(" ")
+									.map((word) => {
+										console.log(word);
+										return <p className="magnetic">{word}</p>;
+									})
+							: null}
+					</div>
+
+					{/* this input is displayed none so we can style the words as magnetics*/}
+					<input
 						id="poem"
 						value={wordPoem}
 						className="poemBox"
@@ -196,6 +218,6 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 			</div>
 		</div>
 	);
-};
+}
 
 export default GenerateWords;

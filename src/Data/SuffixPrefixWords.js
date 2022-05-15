@@ -64,6 +64,7 @@ const SuffixPrefixWords = [
 	"mis",
 	"un",
 	"over",
+	"s",
 ];
 
 export default SuffixPrefixWords;
