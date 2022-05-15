@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { rotationRandomizer } from "./Other";
 import { v4 } from "uuid";
 
-const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
+const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setErrorState }) => {
 	let navigate = useNavigate();
 
 	//suggested 50 words from the api call state
 	const [wordCollection, setWordCollection] = useState([]);
-	const [colorChange, setColourChange] = useState("");
+	const [colorChange, setColourChange] = useState('')
+	const [fontChange, setFontChange] = useState('')
 	//the words that are clicked and are put into the 2nd input form
 	// const [wordPoem, setWordPoem] = useState([]);
 
@@ -28,10 +29,16 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 				},
 			})
 				.then((response) => {
+					const array = response.data
 					setWordCollection(response.data);
+					console.log("data", array )
+					if (array.length === 0) {
+						throw Error ('ERROR')
+					}
+					setErrorState(false)
 				})
 				.catch((error) => {
-					console.log(error);
+					setErrorState(true)
 				});
 		}
 	}, [userSubmit]);
@@ -55,11 +62,10 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 		console.log("wordPoem", wordPoem);
 		const poem = {
 			wordPoem: wordPoem,
-			event: {
-				style: event.target[0].style.cssText,
-			},
-		};
-		console.log("poem", poem);
+			style: event.target[0].style.color,
+			font: event.target[0].style.fontFamily
+		}
+		console.log("poem", poem)
 		//push whatever the user has typed
 		if (poem.wordPoem.length !== 0) {
 			push(dbRef, poem);
@@ -98,45 +104,74 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 		setColourChange(event.target.value);
 	};
 
-	const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-	//value = a.name = red, yellow, green, blue
+
+	const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+//value = a.name = red, yellow, green, blue
+
+	const data2 = [
+		{ name: 'Times New Roman' },
+		{ name: 'Arial' },
+		{ name: 'Trebuchet MS' },
+		{ name: 'Segoe UI' },
+		{ name: 'Cursive' }
+	]
+	const handleFontChange = (event) => {
+		setFontChange(event.target.value)
+	};
+
+	const fonts = ['Times New Roman, Times, serif', 'Arial, Helvetica, sans-serif', 'Trebuchet MS, Lucida Sans Unicode, Lucida Grande, Lucida Sans, Arial, sans-serif', 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif', 'Cursive'];
+
 
 	//looping through 50 words that we get back from the api to display them on the page.
 	//2nd form below
 	return (
 		<div>
+			{errorState ? <p>no data from api</p> : <p>good</p>}
 			<div>
-				<select name="ColorChange" id="colorChange" onChange={handleChange}>
-					<option value="">Select a Color</option>
+				<form>
+					<select name="ColorChange" id="colorChange" onChange={handleChange} >
+						<option value="" >Select a Color</option>
 
-					{data1.map((color, index) => {
-						return (
-							<option key={v4()} value={colors[index]}>
-								{color.name}{" "}
-							</option>
-						);
-					})}
-				</select>
+						{data1.map((color, index) => {
+							return (<option key={v4()} value={colors[index]} style={{ color: colors[index] }}  >{color.name} </option>
+
+							)
+
+						})}
+					</select>
+				</form>
+				<form>
+					<select name="FontChange" id="FontChange" onChange={handleFontChange} >
+						<option value="" >Select a Font</option>
+
+						{data2.map((font, index) => {
+							return (<option key={v4()} value={fonts[index]
+							}  style={{fontFamily: fonts[index]}}>{font.name} </option>
+							)
+						})}
+					</select>
+				</form>
+				<p>{fontChange}</p>
+
 			</div>
-
-			{/* {errorState ? <p className="errP">no data found</p> : <p>null=good</p>} */}
+			
 			<ul className="wordCollection">
-				{wordCollection.length !== 0 ? (
-					wordCollection.map((wordCollection) => {
-						return (
-							<li
-								key={v4()}
-								onClick={() => handleSelection(wordCollection)}
-								className={rotationRandomizer()}
-								style={{ color: colorChange }}
-							>
-								{wordCollection.word}
-							</li>
-						);
-					})
-				) : (
-					<p>Empty. Please type in words in the search bar.</p>
-				)}
+			{wordCollection.length !== 0 ? (
+				wordCollection.map((wordCollection, index) => {
+					return (
+						<li
+							key={v4()}
+							onClick={() => handleSelection(wordCollection)}
+							className={rotationRandomizer()}
+							style={{ color: colorChange, fontFamily: fontChange}}
+						>
+							{wordCollection.word}
+						</li>
+					);
+				})
+			) : (
+				<p>Empty. Please type in words in the search bar.</p>
+			)}
 			</ul>
 
 			{/* {
@@ -169,11 +204,9 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 									.split(" ")
 									.map((word) => {
 										console.log(word);
-										return (
-											<p key={v4()} className="magnetic">
-												{word}
-											</p>
-										);
+										return <p key={v4()} className="magnetic"
+											style={{ color: colorChange, fontFamily: fontChange }}>{word}
+										</p>;
 									})
 							: null}
 					</div>
@@ -185,7 +218,8 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 						className="poemBox"
 						onChange={handleSelection}
 						placeholder="Select the words above to create a poem!"
-						style={{ color: colorChange }}
+						style={{ color: colorChange, fontFamily: fontChange }}
+						
 					/>
 
 					<button type="submit">Submit</button>

@@ -12,9 +12,6 @@ const Form = ({
 }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (userSubmit === "") {
-			setErrorState(true);
-		}
 
 		setUserSubmit(autoFill);
 
@@ -58,6 +55,7 @@ const Form = ({
 						value={autoFill}
 						pattern="[a-zA-z]+"
 						placeholder="Start typing a word..."
+						
 					/>
 
 					{autoFill !== ""

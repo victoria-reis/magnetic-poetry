@@ -19,10 +19,11 @@ const Gallery = () => {
 		onValue(dbRef, (response) => {
 			const newState = [];
 			const data = response.val();
+			console.log("response", data)
 
 			for (let key in data) {
 				// pushing the values from the object into our newState array
-				newState.push({ key: key, name: data[key].wordPoem });
+				newState.push({ key: key, name: data[key].wordPoem, color:data[key].style, font:data[key].font});
 			}
 			// here we use Firebase's .val() method to parse our database info the way we want it
 			console.log(response.val());
@@ -75,7 +76,7 @@ const Gallery = () => {
           {poems.map((poem) => {
             return (
               <li key={poem.key}>
-                <p>
+                <p style={{color: poem.color, fontFamily: poem.font}}>
                   {poem.name} 
                 </p>
                 <button onClick={() => handleRemovePoem(poem.key)}>
