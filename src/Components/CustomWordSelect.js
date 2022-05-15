@@ -6,7 +6,10 @@ const CustomWordSelect = ({wordPoem, setWordPoem}) => {
 
   const handleCustomSubmit = (e) => {
     e.preventDefault();
+    if (handleCustomSubmit !== "") {
     setCustomTextBox([... customTextBox, customInput]);
+    setCustomInput("");
+    }
   }
 
   const handleCustomChange = (e) => {
