@@ -4,6 +4,7 @@ import axios from "axios";
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
 import FunctionWordsSelect from "./FunctionWordsSelect";
+import CustomWordSelect from "./CustomWordSelect"
 
 const AutoComplete = () => {
 	//state for input field
@@ -67,6 +68,7 @@ const AutoComplete = () => {
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
+      <CustomWordSelect setWordPoem = {setWordPoem} wordPoem = {wordPoem} />
 		</section>
 	);
 };
