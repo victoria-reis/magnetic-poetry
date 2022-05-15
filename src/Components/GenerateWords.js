@@ -4,11 +4,13 @@ import firebase from "../firebase";
 import { getDatabase, ref, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
-const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
+
+const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 	let navigate = useNavigate();
 
 	//suggested 50 words from the api call state
 	const [wordCollection, setWordCollection] = useState([]);
+	const [colorChange, setColourChange] = useState('')
 	//the words that are clicked and are put into the 2nd input form
 	// const [wordPoem, setWordPoem] = useState([]);
 
@@ -41,12 +43,21 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 
 	//submit button for the 2nd form that will push the poem to firebase.
 	const handleSubmit = (event) => {
+		console.log("event", event)
 		event.preventDefault();
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
-
+		console.log("wordPoem", wordPoem)
+		const poem = {
+			wordPoem: wordPoem,
+			event: {
+				style: event.target[0].style.cssText
+			}
+		}
+		console.log("poem", poem)
 		//push whatever the user has typed
-		push(dbRef, { wordPoem: wordPoem });
+		push(dbRef, poem);
+
 
 		// reset the state to an empty string
 		setWordPoem("");
@@ -92,10 +103,41 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 		}
 	};
 
+	const data1 = [
+		{ name: 'blue' },
+		{ name: 'green' },
+		{ name: 'yellow' },
+		{ name: 'orange' }
+	];
+
+	const handleChange = (event) => {
+		setColourChange(event.target.value)
+	};
+
+	const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+//value = a.name = red, yellow, green, blue
+
+
 	//looping through 50 words that we get back from the api to display them on the page.
 	//2nd form below
 	return (
+		
 		<div>
+			<div>
+					<select name="ColorChange" id="colorChange" onChange={handleChange} >
+						<option value="" >Select a Color</option>
+
+						{data1.map((color, index) => {
+							return (<option key={index} value={colors[index]
+							}  >{color.name} </option>
+
+							)
+
+						})}
+					</select>
+
+			</div>
+			
 			{errorState ? <p className="errP">no data found</p> : <p>null=good</p>}
 
 			{wordCollection.length !== 0 ? (
@@ -105,6 +147,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 							key={index}
 							onClick={() => handleSelection(wordCollection)}
 							className={rotationRandomizer()}
+							style={{ color: colorChange}}
 						>
 							{wordCollection.word}
 						</div>
@@ -143,6 +186,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState }) => {
 						className="poemBox"
 						onChange={handleSelection}
 						placeholder="Select the words above to create a poem!"
+						style={{ color: colorChange }}
 					/>
 
 					<button type="submit">Submit</button>

@@ -50,6 +50,7 @@ const Form = ({
 					value={autoFill}
 					pattern="[a-zA-z]+"
 					placeholder="Start typing a word..."
+					
 				/>
 
 				<button type="submit">Submit</button>

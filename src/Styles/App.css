@@ -246,6 +246,11 @@ body {
   color: blueviolet;
 }
 
+h1 {
+  font-size: 7rem;
+  font-weight: 400;
+}
+
 *,
 h1 {
   margin: 0;
@@ -320,7 +325,7 @@ button {
   border: none;
   padding: 20px;
   margin: 10px;
-  background-color: #999;
+  background-color: rgb(255, 254, 230);
   width: 900px;
   height: 400px;
   overflow-wrap: anywhere;
@@ -335,16 +340,52 @@ button {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .poems li {
   width: 40%;
-  padding: 20px;
+  padding: 70px;
   border: 1px solid green;
-  margin: 20px;
   line-height: 30px;
+  position: relative;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px 0;
 }
 .poems button {
-  padding: 5px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
   border: none;
   background-color: antiquewhite;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.App {
+  background-image: url(../assets/5333978.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
 }
