@@ -47,7 +47,7 @@ const CustomWordSelect = ({
           }}
         >
           <label htmlFor="search">Custom text</label>
-          <div className="inputOptionsContainer">
+          <div className="customInputContainer">
             <input
               type="search"
               id="search"

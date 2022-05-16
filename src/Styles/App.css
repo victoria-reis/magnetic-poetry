@@ -403,7 +403,7 @@ select {
 .inputOptionsContainer {
   border: 1px solid #2C2C2C;
   position: absolute;
-  z-index: 1;
+  z-index: 100;
 }
 .inputOptionsContainer option {
   background-color: rgba(255, 255, 255, 0.8);
@@ -426,6 +426,21 @@ select {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.customInputContainer {
+  border: 1px solid #2C2C2C;
+  position: absolute;
+  z-index: 1;
+}
+.customInputContainer option {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0 10px 5px 10px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.customInputContainer option:hover, .customInputContainer option:active {
+  background-color: gainsboro;
 }
 
 .poems {

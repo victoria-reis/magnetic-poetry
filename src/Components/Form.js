@@ -40,6 +40,7 @@ const Form = ({
 		setShow(false);
 	};
 
+
 	return (
 		<>
 			<h2>Create your own poem!</h2>
