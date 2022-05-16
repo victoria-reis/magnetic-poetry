@@ -4,6 +4,7 @@ import firebase from "../firebase";
 import { getDatabase, ref, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { rotationRandomizer } from "./Other";
+import CustomWordSelect from "./CustomWordSelect";
 
 
 const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
@@ -128,96 +129,79 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 	//looping through 50 words that we get back from the api to display them on the page.
 	//2nd form below
 	return (
-		
-		<div>
-			<div>
-					<select name="ColorChange" id="colorChange" onChange={handleChange} >
-						<option value="" >Select a Color</option>
+    <div>
 
-						{data1.map((color, index) => {
-							return (<option key={index} value={colors[index]
-							}  >{color.name} </option>
+      {/* {errorState ? <p className="errP">no data found</p> : <p>null=good</p>} */}
+      <ul className="wordCollection">
+        {wordCollection.length !== 0 ? (
+          wordCollection.map((wordCollection, index) => {
+            return (
+              <li
+                key={index}
+                onClick={() => handleSelection(wordCollection)}
+                className={rotationRandomizer()}
+                style={{ color: colorChange }}
+              >
+                {wordCollection.word}
+              </li>
+            );
+          })
+        ) : (
+          <p>Empty. Please type in words in the search bar.</p>
+        )}
+      </ul>
 
-							)
+      <CustomWordSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
 
-						})}
-					</select>
+      <div>
+        <select name="ColorChange" id="colorChange" onChange={handleChange}>
+          <option value="">Select a Color</option>
 
-			</div>
-			
-			{/* {errorState ? <p className="errP">no data found</p> : <p>null=good</p>} */}
-			<ul className="wordCollection">
-			{wordCollection.length !== 0 ? (
-				wordCollection.map((wordCollection, index) => {
-					return (
-						<li
-							key={index}
-							onClick={() => handleSelection(wordCollection)}
-							className={rotationRandomizer()}
-							style={{ color: colorChange}}
-						>
-							{wordCollection.word}
-						</li>
-					);
-				})
-			) : (
-				<p>Empty. Please type in words in the search bar.</p>
-			)}
-			</ul>
-			
+          {data1.map((color, index) => {
+            return (
+              <option key={index} value={colors[index]}>
+                {color.name}{" "}
+              </option>
+            );
+          })}
+        </select>
+      </div>
 
-			{/* {
-
-              wordCollection.length !== 0 && autoFill === ""
-                ?
-                wordCollection.map((wordCollection, index) => {
-                    return (
-                      <div key={index} onClick={() => handleSelection(wordCollection)}>
-                        {wordCollection.word}
-                      </div>
-                    );
+      <div>
+        <form
+          onSubmit={(event) => {
+            handleSubmit(event);
+          }}
+        >
+          <div className="poemDisplay">
+            {wordPoem[0]
+              ? wordPoem[0]
+                  .trim()
+                  .split(" ")
+                  .map((word) => {
+                    console.log(word);
+                    return <p className="magnetic">{word}</p>;
                   })
-                :null
-                (
-                  <div>No words found</div>
-                )
-                } */}
+              : null}
+          </div>
 
-			<div>
-				<form
-					onSubmit={(event) => {
-						handleSubmit(event);
-					}}
-				>
-					<div className="poemDisplay">
-						{wordPoem[0]
-							? wordPoem[0]
-									.trim()
-									.split(" ")
-									.map((word) => {
-										console.log(word);
-										return <p className="magnetic">{word}</p>;
-									})
-							: null}
-					</div>
+          {/* this input is displayed none so we can style the words as magnetics*/}
+          <input
+            id="poem"
+            value={wordPoem}
+            className="poemBox"
+            onChange={handleSelection}
+            placeholder="Select the words above to create a poem!"
+            style={{ color: colorChange }}
+          />
 
-					{/* this input is displayed none so we can style the words as magnetics*/}
-					<input
-						id="poem"
-						value={wordPoem}
-						className="poemBox"
-						onChange={handleSelection}
-						placeholder="Select the words above to create a poem!"
-						style={{ color: colorChange }}
-					/>
-
-					<button type="submit">Submit</button>
-					<button onClick={handleClear}>ClearAll</button>
-					<button onClick={handleOne}>Clear Last Word</button>
-				</form>
-			</div>
-		</div>
-	);
+          <button type="submit">Submit</button>
+          <button onClick={handleClear}>ClearAll</button>
+          <button onClick={handleOne}>Clear Last Word</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default GenerateWords;
