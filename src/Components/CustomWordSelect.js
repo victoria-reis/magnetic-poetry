@@ -1,30 +1,26 @@
 import { useState } from "react";
 
-const CustomWordSelect = ({wordPoem, setWordPoem}) => {
+const CustomWordSelect = ({wordPoem, setWordPoem, rotationRandomizer}) => {
   const [customInput, setCustomInput] = useState("");
   const [customTextBox, setCustomTextBox] = useState([]);
-  const [customUserSubmit, setCustomUserSubmit] = useState (false);
+  const [customUserSubmit, setCustomUserSubmit] = useState(false);
 
   const handleCustomSubmit = (e) => {
     e.preventDefault();
     if (customInput !== "") {
-    setCustomUserSubmit(true);
-    setCustomTextBox([... customTextBox, customInput]);
-    setCustomInput("");
+      setCustomUserSubmit(true);
+      setCustomTextBox([...customTextBox, customInput]);
+      setCustomInput("");
     }
-  }
+  };
 
   const handleCustomChange = (e) => {
     setCustomInput(e.target.value.trim());
-
-  }
+  };
   const handleCustomSelection = (customWord) => {
-    console.log(customWord)
+    console.log(customWord);
     setWordPoem([wordPoem + customWord + " "]);
-  }
-
-  console.log (customTextBox)
-
+  };
   return (
     <div>
       <div>
@@ -44,18 +40,21 @@ const CustomWordSelect = ({wordPoem, setWordPoem}) => {
               }}
               value={customInput}
               placeholder="Add a word"
-
             />
           </div>
           <button type="submit">Add</button>
         </form>
       </div>
 
-      <div className="wordCollection">
+      <div className="customWordCollection">
         {customUserSubmit !== false ? (
           customTextBox.map((customWord, index) => {
             return (
-              <div key={index} onClick={() => handleCustomSelection(customWord)}>
+              <div
+                key={index}
+                onClick={() => handleCustomSelection(customWord)}
+                className={rotationRandomizer()}
+              >
                 {customWord}
               </div>
             );

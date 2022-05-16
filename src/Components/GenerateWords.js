@@ -130,7 +130,6 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
 	//2nd form below
 	return (
     <div>
-
       {/* {errorState ? <p className="errP">no data found</p> : <p>null=good</p>} */}
       <ul className="wordCollection">
         {wordCollection.length !== 0 ? (
@@ -151,7 +150,11 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
         )}
       </ul>
 
-      <CustomWordSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
+      <CustomWordSelect
+      setWordPoem={setWordPoem}
+      wordPoem={wordPoem}
+      rotationRandomizer = {rotationRandomizer}
+      />
 
       <div>
         <select name="ColorChange" id="colorChange" onChange={handleChange}>

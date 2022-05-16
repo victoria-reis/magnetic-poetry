@@ -407,6 +407,19 @@ button {
   background-color: gainsboro;
 }
 
+.customWordCollection {
+  margin: 0 auto;
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .poems {
   display: -webkit-box;
   display: -ms-flexbox;
