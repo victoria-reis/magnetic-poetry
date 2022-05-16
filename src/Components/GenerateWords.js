@@ -1,23 +1,29 @@
-import { useEffect, useState } from "react";
+//modules
 import axios from "axios";
 import firebase from "../firebase";
 import { getDatabase, ref, push } from "firebase/database";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { rotationRandomizer } from "./Other";
 import { v4 } from "uuid";
+
+
+//function from a component ./Other
+import { rotationRandomizer } from "./Other";
+
+
+
 
 const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setErrorState, setUserSubmit}) => {
 	let navigate = useNavigate();
 
 	//suggested 50 words from the api call state
 	const [wordCollection, setWordCollection] = useState([]);
+	//state for the color
 	const [colorChange, setColourChange] = useState('')
+	//state for the font
 	const [fontChange, setFontChange] = useState('')
-	
-	//the words that are clicked and are put into the 2nd input form
-	// const [wordPoem, setWordPoem] = useState([]);
 
-	//the topics returned whatever word the user has clicked and suggests a list of words based on that
+	//the topics returned whatever word the user has clicked and suggests a list of 50 words based on that
 	useEffect(() => {
 		if (userSubmit !== "") {
 			axios({
@@ -61,6 +67,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
 		console.log("wordPoem", wordPoem);
+		//pushing poem, styles and fonts
 		const poem = {
 			wordPoem: wordPoem,
 			style: event.target[0].style.color,
@@ -76,16 +83,18 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 		}
 	};
 
+	//setting the poem state to empty array
 	const handleClear = (wordPoem) => {
 		wordPoem.preventDefault();
 		setWordPoem([]);
 		console.log("setWordPoem", setWordPoem);
 	};
 
+	//checking if the input is empty, if it is then split each word into separate substrings in the array
+	// then remove the last word from that array with pop, and convert it back to a string with join method.
 	const handleOne = (words) => {
 		words.preventDefault();
 		setWordPoem(() => {
-			// wordPoem.toString().split(" ").slice(0, -1).join(" ")
 			if (wordPoem !== []) {
 				const text = wordPoem[0].split(" ");
 				text.pop();
@@ -101,6 +110,8 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 		{ name: "orange" },
 	];
 
+
+	//see what color was selected 
 	const handleChange = (event) => {
 		setColourChange(event.target.value);
 	};
@@ -116,15 +127,16 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 		{ name: 'Segoe UI' },
 		{ name: 'Cursive' }
 	]
+
+	//function for what font was selected
 	const handleFontChange = (event) => {
 		setFontChange(event.target.value)
 	};
 
 	const fonts = ['Times New Roman, Times, serif', 'Arial, Helvetica, sans-serif', 'Trebuchet MS, Lucida Sans Unicode, Lucida Grande, Lucida Sans, Arial, sans-serif', 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif', 'Cursive'];
-
-
-	//looping through 50 words that we get back from the api to display them on the page.
-	//2nd form below
+	//first thing in the form is mapping through each color with data1 array and then mapping through each font with data2 array.
+	//then you map through each of the 50 words generated from the API and assign a style of the color/font that was selected from the dropdown.
+	//the final form, the display form, that will have the words that were clicked to be displayed onto the grey background. Color and fonts applied to them, depending on the selection.
 	return (
 		<div>
 			{errorState ? <p>no data from api</p> : <p>good</p>}
@@ -173,23 +185,6 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 				<p>Empty. Please type in words in the search bar.</p>
 			)}
 			</ul>
-
-			{/* {
-
-              wordCollection.length !== 0 && autoFill === ""
-                ?
-                wordCollection.map((wordCollection, index) => {
-                    return (
-                      <div key={index} onClick={() => handleSelection(wordCollection)}>
-                        {wordCollection.word}
-                      </div>
-                    );
-                  })
-                :null
-                (
-                  <div>No words found</div>
-                )
-                } */}
 
 			<div>
 				<form

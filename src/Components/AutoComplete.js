@@ -1,6 +1,8 @@
+//modules
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+//components
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
 import FunctionWordsSelect from "./FunctionWordsSelect";
@@ -56,8 +58,6 @@ const AutoComplete = () => {
 				suggestions={suggestions}
 				setErrorState={setErrorState}
 				userSubmit={userSubmit}
-				// loading={loading}
-				// setLoading={setLoading}
 			/>
 
 			<GenerateWords
@@ -68,7 +68,6 @@ const AutoComplete = () => {
 				wordPoem={wordPoem}
 				errorState={errorState}
 				setErrorState={setErrorState}
-				// setLoading={setLoading}
 				setUserSubmit={setUserSubmit}
 			/>
 

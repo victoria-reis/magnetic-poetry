@@ -1,38 +1,53 @@
-import FunctionWords from "../Data/FunctionWords";
-import SuffixPrefixWords from "../Data/SuffixPrefixWords";
+//modules
 import { useState } from "react";
 import { v4 } from "uuid";
+//components
+import FunctionWords from "../Data/FunctionWords";
+import SuffixPrefixWords from "../Data/SuffixPrefixWords";
 
 const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
+	//state for function word
 	const [functionWord, setFunctionWord] = useState("");
+	//state for prefix and suffix words
 	const [suffixPrefix, setSuffixPrefix] = useState("");
 
+
+	//sets the state for the function word
 	const handleFWordSubmit = (event) => {
 		event.preventDefault();
 		setFunctionWord(event.target[0].value);
 	};
-
+	
+	//sets the state for prefixes and suffix words
 	const handleSuffixPrefixSubmit = (event) => {
 		event.preventDefault();
 		setSuffixPrefix(event.target[0].value);
 	};
 
+	//whenever the user clicks the suffixes word it has a specific class and that character that starts with -.
 	const handleSelection = (event) => {
 		if (
 			event.target.id === "suffixPrefix" &&
 			event.target.innerText.charAt(0) === "-"
 		) {
+			//sets the state for it
 			setWordPoem([wordPoem + event.target.innerText.slice(1)]);
 		} else if (
+			//suffix that ends with the hyphen
 			event.target.id === "suffixPrefix" &&
 			event.target.innerText.endsWith("-")
 		) {
 			setWordPoem([wordPoem + " " + event.target.innerText]);
 		} else {
+			//function word that is being set onto the page
 			setWordPoem([wordPoem + " " + event.target.innerText]);
 		}
 	};
 
+
+	//form to loop through all the function word
+	//so for the first generate piece your sort through the array, however if the word starts with those four exceptions you capitalize them, and not capitalizing everything else. 
+	//for the second generate piece you just append two options - the suffix or the prefix.
 	return (
 		<>
 			<form
