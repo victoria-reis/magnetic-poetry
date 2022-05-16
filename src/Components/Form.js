@@ -8,22 +8,28 @@ const Form = ({
 	show,
 	suggestions,
 	userSubmit,
-	setErrorState,
+	setErrorState
 }) => {
+
 	const handleSubmit = (event) => {
-		event.preventDefault();
-
-		setUserSubmit(autoFill);
-
-		setAutoFill("");
-
+		setErrorState(false)
+		if (userSubmit === ''){
+			setErrorState(true)
+		}
 		console.log("userSubmit", userSubmit);
+		console.log("autofill", autoFill)
+		event.preventDefault();
+		setUserSubmit(autoFill);
+		setAutoFill("");
+	
 	};
-
+	console.log("userSubmit", userSubmit);
 	const handleChange = (event) => {
 		setErrorState(false);
 		setAutoFill(event.target.value.trim());
+		
 		setShow(true);
+		
 	};
 
 	const handleSelection = (wordObj) => {

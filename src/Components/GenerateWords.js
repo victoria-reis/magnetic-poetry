@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { rotationRandomizer } from "./Other";
 import { v4 } from "uuid";
 
-const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setErrorState }) => {
+const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setErrorState, setUserSubmit}) => {
 	let navigate = useNavigate();
 
 	//suggested 50 words from the api call state
 	const [wordCollection, setWordCollection] = useState([]);
 	const [colorChange, setColourChange] = useState('')
 	const [fontChange, setFontChange] = useState('')
+	
 	//the words that are clicked and are put into the 2nd input form
 	// const [wordPoem, setWordPoem] = useState([]);
 
@@ -31,14 +32,14 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 				.then((response) => {
 					const array = response.data
 					setWordCollection(response.data);
-					console.log("data", array )
+					setUserSubmit('')
 					if (array.length === 0) {
 						throw Error ('ERROR')
 					}
 					setErrorState(false)
 				})
 				.catch((error) => {
-					setErrorState(true)
+					setErrorState(error)
 				});
 		}
 	}, [userSubmit]);
@@ -133,7 +134,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 						<option value="" >Select a Color</option>
 
 						{data1.map((color, index) => {
-							return (<option key={v4()} value={colors[index]} style={{ color: colors[index] }}  >{color.name} </option>
+							return (<option key={index} value={colors[index]} style={{ color: colors[index] }}>{color.name}  </option>
 
 							)
 
@@ -142,22 +143,21 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 				</form>
 				<form>
 					<select name="FontChange" id="FontChange" onChange={handleFontChange} >
-						<option value="" >Select a Font</option>
+						<option value="">Select a Font</option>
 
 						{data2.map((font, index) => {
-							return (<option key={v4()} value={fonts[index]
+							return (<option key={index} value={fonts[index]
 							}  style={{fontFamily: fonts[index]}}>{font.name} </option>
 							)
 						})}
 					</select>
 				</form>
-				<p>{fontChange}</p>
 
 			</div>
 			
 			<ul className="wordCollection">
-			{wordCollection.length !== 0 ? (
-				wordCollection.map((wordCollection, index) => {
+			{errorState = true ? (
+				wordCollection.map((wordCollection) => {
 					return (
 						<li
 							key={v4()}
