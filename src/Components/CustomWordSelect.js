@@ -1,3 +1,4 @@
+//modules
 import { useState } from "react";
 
 const CustomWordSelect = ({
@@ -6,12 +7,17 @@ const CustomWordSelect = ({
   rotationRandomizer,
   colorChange,
 }) => {
+  //states
   const [customInput, setCustomInput] = useState("");
   const [customTextBox, setCustomTextBox] = useState([]);
   const [customUserSubmit, setCustomUserSubmit] = useState(false);
 
+  //handle submit button
   const handleCustomSubmit = (e) => {
     e.preventDefault();
+    //if the search field is not empty set the previous array to whatever the user has to type
+		//create a copy of array and pushing custom input
+		//setting back to empty string
     if (customInput !== "") {
       setCustomUserSubmit(true);
       setCustomTextBox([...customTextBox, customInput]);
@@ -19,13 +25,18 @@ const CustomWordSelect = ({
     }
   };
 
+//user input, trim cut empty spaces
   const handleCustomChange = (e) => {
     setCustomInput(e.target.value.trim());
   };
+
+  //adding the word to poemdisplay + empty string
   const handleCustomSelection = (customWord) => {
     console.log(customWord);
     setWordPoem([wordPoem + customWord + " "]);
   };
+
+  //mapping through custom words
   return (
     <div>
       <div>

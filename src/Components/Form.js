@@ -1,3 +1,4 @@
+//generate keys 
 import { v4 } from "uuid";
 
 const Form = ({
@@ -12,7 +13,6 @@ const Form = ({
 }) => {
 
 	const handleSubmit = (event) => {
-		setErrorState(false)
 		if (userSubmit === ''){
 			setErrorState(true)
 		}
@@ -32,8 +32,11 @@ const Form = ({
 		
 	};
 
+	
 	const handleSelection = (wordObj) => {
+		//auto fill equals to drop down menu suggestion
 		setAutoFill(wordObj.word);
+		//hides the auto complete suggestions
 		setShow(false);
 	};
 
@@ -41,6 +44,8 @@ const Form = ({
 		<>
 			<h2>Create your own poem!</h2>
 			<h3>First, type a word and we will search for related ones.</h3>
+
+			{/* form to generate 50 words on submit */}
 			<form
 				onSubmit={(event) => {
 					handleSubmit(event);
@@ -63,9 +68,9 @@ const Form = ({
 						placeholder="Start typing a word..."
 						
 					/>
-
-					{autoFill !== ""
-						? suggestions.map((wordObj) => {
+					{/* if autofill doesn't equal empty string show word suggestions in a down drop menu */}
+					
+						{suggestions.map((wordObj) => {
 								return (
 									<option
 										key={v4()}
@@ -80,9 +85,9 @@ const Form = ({
 									</option>
 								);
 						  })
-						: null}
+						}
 				</div>
-
+				{/* api search button */}
 				<button type="submit">Search</button>
 			</form>
 		</>

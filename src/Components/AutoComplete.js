@@ -3,10 +3,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 //components
+<<<<<<< Updated upstream
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
+=======
+>>>>>>> Stashed changes
 import FunctionWordsSelect from "./FunctionWordsSelect";
 import CustomWordSelect from "./CustomWordSelect";
+import GenerateWords from "./GenerateWords";
+import Form from "./Form";
 
 const AutoComplete = () => {
 	//state for input field
@@ -21,9 +26,13 @@ const AutoComplete = () => {
 	const [wordCollection, setWordCollection] = useState([]);
 	//the words that are clicked and are put into the 2nd input form
 	const [wordPoem, setWordPoem] = useState([]);
+	//error handling state
 	const [errorState, setErrorState] = useState(false);
+<<<<<<< Updated upstream
 	// const [loading, setLoading] = useState(false)
   
+=======
+>>>>>>> Stashed changes
 
 	//pass the autofill as a parameter to display whatever is returned as a state
 	useEffect(() => {
@@ -47,6 +56,7 @@ const AutoComplete = () => {
 		}
 	}, [autoFill]);
 
+	//parent component that passes states to respective child components through props
 	return (
 		<section>
 			<Form
@@ -73,6 +83,11 @@ const AutoComplete = () => {
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
+<<<<<<< Updated upstream
+=======
+
+			<CustomWordSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
+>>>>>>> Stashed changes
 		</section>
 	);
 };

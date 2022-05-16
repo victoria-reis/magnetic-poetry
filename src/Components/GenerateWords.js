@@ -37,6 +37,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 				},
 			})
 				.then((response) => {
+					
 					const array = response.data
 					setWordCollection(response.data);
 					setUserSubmit('')
