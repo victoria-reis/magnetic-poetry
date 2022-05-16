@@ -154,6 +154,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState}) => {
       setWordPoem={setWordPoem}
       wordPoem={wordPoem}
       rotationRandomizer = {rotationRandomizer}
+      colorChange = {colorChange}
       />
 
       <div>

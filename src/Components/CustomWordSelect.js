@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-const CustomWordSelect = ({wordPoem, setWordPoem, rotationRandomizer}) => {
+const CustomWordSelect = ({
+  wordPoem,
+  setWordPoem,
+  rotationRandomizer,
+  colorChange,
+}) => {
   const [customInput, setCustomInput] = useState("");
   const [customTextBox, setCustomTextBox] = useState([]);
   const [customUserSubmit, setCustomUserSubmit] = useState(false);
@@ -54,6 +59,7 @@ const CustomWordSelect = ({wordPoem, setWordPoem, rotationRandomizer}) => {
                 key={index}
                 onClick={() => handleCustomSelection(customWord)}
                 className={rotationRandomizer()}
+                style={{ color: colorChange }}
               >
                 {customWord}
               </div>
