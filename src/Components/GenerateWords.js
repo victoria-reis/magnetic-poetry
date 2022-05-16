@@ -5,6 +5,8 @@ import { getDatabase, ref, push } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
+import {  toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 
 //function from a component ./Other
@@ -14,7 +16,7 @@ import CustomWordSelect from "./CustomWordSelect";
 
 
 
-const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setErrorState, setUserSubmit}) => {
+const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setUserSubmit}) => {
 	let navigate = useNavigate();
 
 	//suggested 50 words from the api call state
@@ -37,17 +39,17 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 				},
 			})
 				.then((response) => {
-
 					const array = response.data
 					setWordCollection(response.data);
 					setUserSubmit('')
 					if (array.length === 0) {
-						throw Error ('ERROR')
+						toast.error('No words found.')
 					}
-					setErrorState(false)
 				})
 				.catch((error) => {
-					setErrorState(error)
+					if (error) {
+           			 toast.error("Error 404. Request not found");
+          				}
 				});
 		}
 	}, [userSubmit]);
@@ -143,7 +145,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
     <>
 
         <ul className="wordCollection">
-        {errorState = true ? (
+        {errorState === false ? (
           wordCollection.map((wordCollection) => {
             return (
               <li
@@ -156,9 +158,10 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
               </li>
             );
           })
-          ) : (
-            <p>Empty. Please type in words in the search bar.</p>
-            )}
+		  ) : (
+			<p>Empty. Please type in words in the search bar.</p>
+			
+			)}
         </ul>
 
         <CustomWordSelect
@@ -168,7 +171,6 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
         colorChange = {colorChange}
         />
       <div>
-        {errorState ? <p>no data from api</p> : <p>good</p>}
         <div>
           <form>
             <select name="ColorChange" id="colorChange" onChange={handleChange} >

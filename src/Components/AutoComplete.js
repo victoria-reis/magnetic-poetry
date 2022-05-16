@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 //components
 import FunctionWordsSelect from "./FunctionWordsSelect";
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
+import { toast } from "react-toastify";
 
 const AutoComplete = () => {
 	//state for input field
@@ -37,10 +39,11 @@ const AutoComplete = () => {
 			})
 				.then((response) => {
 					setSuggestions(response.data);
-					console.log(response.data);
 				})
 				.catch((error) => {
-					console.log(error);
+					if (error) {
+						toast.error ('Error 404. Request not found')
+					}
 				});
 		}
 	}, [autoFill]);

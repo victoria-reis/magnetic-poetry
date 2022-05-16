@@ -34,7 +34,7 @@ a {
 button {
   color: #084b6d;
   background-color: transparent;
-  padding: 18px 36px;
+  padding: 15px;
   border: 2px solid #084b6d;
   font-size: 0.8rem;
   font-weight: bold;
@@ -54,9 +54,19 @@ button {
 }
 
 select {
-	border: none;
-	padding: 5px;
-	border: 1px solid $black;
+  appearance: none;
+  color: #084b6d;
+  padding: 10px 30px 10px 10px ;
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #eee;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  background-image: url(../assets/caret-down-solid.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: 97% center;
 }
 
 .App {

@@ -16,14 +16,11 @@ const Form = ({
 		if (userSubmit === ''){
 			setErrorState(true)
 		}
-		console.log("userSubmit", userSubmit);
-		console.log("autofill", autoFill)
 		event.preventDefault();
 		setUserSubmit(autoFill);
 		setAutoFill("");
 
 	};
-	console.log("userSubmit", userSubmit);
 	const handleChange = (event) => {
 		setErrorState(false);
 		setAutoFill(event.target.value.trim());

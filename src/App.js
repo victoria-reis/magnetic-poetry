@@ -1,6 +1,7 @@
 //Modules
 // import { useState } from "react";
 import { Link, Routes, Route } from "react-router-dom";
+import { ToastContainer, Zoom, } from "react-toastify";
 
 //Config
 import AutoComplete from "./Components/AutoComplete";
@@ -15,8 +16,12 @@ function App() {
 		<div className="App">
 			<div className="wrapper">
 				<h1>Refrigeration Versification</h1>
-				{/* <AutoComplete /> */}
 				<ul className="navBar">
+				<ToastContainer 
+					draggable={true}
+					transition={Zoom}
+					autoClose={8000}/>
+					
 					<li>
 						<Link to="/">Gallery</Link>
 					</li>
