@@ -295,6 +295,13 @@ select {
   border: 1px solid #2C2C2C;
 }
 
+.App {
+  background-image: url(../assets/5333978.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .wordCollection {
   margin: 0 auto;
   width: 90%;
@@ -309,13 +316,11 @@ select {
 }
 
 .magnetic {
-  position: relative;
   background-color: #FFFFFF;
   -webkit-box-shadow: 0 1px 2px 0 #999;
           box-shadow: 0 1px 2px 0 #999;
   display: inline-block;
   padding: 6px 8px;
-  /* margin-right: 2px; */
   margin: 7px;
   cursor: pointer;
   -webkit-transition: 0.2s;
@@ -330,26 +335,36 @@ select {
 
 .style-1 {
   -webkit-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+  transform: rotate(-2deg);
   transform: rotate(-2deg);
 }
 
 .style-2 {
   -webkit-transform: rotate(3deg);
+          transform: rotate(3deg);
+  transform: rotate(3deg);
   transform: rotate(3deg);
 }
 
 .style-3 {
   -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
+  transform: rotate(-5deg);
   transform: rotate(-5deg);
 }
 
 .style-4 {
   -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+  transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
 
 .style-5 {
   -webkit-transform: rotate(4deg);
+          transform: rotate(4deg);
+  transform: rotate(4deg);
   transform: rotate(4deg);
 }
 
@@ -434,13 +449,12 @@ select {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 .poems li {
   width: 40%;
-  padding: 70px;
+  padding: 50px 30px 30px 30px;
   border: 1px solid green;
   line-height: 30px;
   position: relative;
@@ -448,7 +462,14 @@ select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 50px 0;
+}
+.poems li div {
+  -ms-flex-item-align: start;
+      align-self: start;
 }
 .poems button {
   display: -webkit-box;
@@ -471,15 +492,4 @@ select {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-}
-
-.App {
-  background-image: url(../assets/5333978.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-h1 {
-  text-align: center;
 }
