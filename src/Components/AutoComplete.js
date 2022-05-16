@@ -23,6 +23,7 @@ const AutoComplete = () => {
 	const [wordPoem, setWordPoem] = useState([]);
 	const [errorState, setErrorState] = useState(false);
 	// const [loading, setLoading] = useState(false)
+  
 
 	//pass the autofill as a parameter to display whatever is returned as a state
 	useEffect(() => {
@@ -72,7 +73,6 @@ const AutoComplete = () => {
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
-			<CustomWordSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
 		</section>
 	);
 };

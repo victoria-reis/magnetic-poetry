@@ -9,6 +9,7 @@ import { v4 } from "uuid";
 
 //function from a component ./Other
 import { rotationRandomizer } from "./Other";
+import CustomWordSelect from "./CustomWordSelect";
 
 
 
@@ -138,6 +139,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 	//then you map through each of the 50 words generated from the API and assign a style of the color/font that was selected from the dropdown.
 	//the final form, the display form, that will have the words that were clicked to be displayed onto the grey background. Color and fonts applied to them, depending on the selection.
 	return (
+
 		<div>
 			{errorState ? <p>no data from api</p> : <p>good</p>}
 			<div>
@@ -167,6 +169,13 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 
 			</div>
 			
+      <CustomWordSelect
+      setWordPoem={setWordPoem}
+      wordPoem={wordPoem}
+      rotationRandomizer = {rotationRandomizer}
+      colorChange = {colorChange}
+      />
+
 			<ul className="wordCollection">
 			{errorState = true ? (
 				wordCollection.map((wordCollection) => {
@@ -225,5 +234,6 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 		</div>
 	);
 };
+
 
 export default GenerateWords;

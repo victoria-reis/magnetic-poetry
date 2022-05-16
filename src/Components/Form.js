@@ -71,6 +71,7 @@ const Form = ({
 										key={v4()}
 										style={{ display: show ? "block" : "none" }}
 										onClick={() => handleSelection(wordObj)}
+
 										value={wordObj.word}
 										className="color"
 										tabIndex="0"
