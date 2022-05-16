@@ -73,4 +73,4 @@ const CustomWordSelect = ({
   );
 };
 
-export default CustomWordSelect
+export default CustomWordSelect;

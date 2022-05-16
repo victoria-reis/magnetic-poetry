@@ -1,9 +1,8 @@
 //general styles
 
 *,
-h1,
-h2,
-h3 {
+h1
+{
 	margin: 0;
 	padding: 0;
 }
@@ -35,4 +34,10 @@ a {
 
 button {
 	cursor: pointer;
+}
+
+select { 
+	border: none;
+	padding: 5px;
+	border: 1px solid $black;
 }

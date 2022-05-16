@@ -1,29 +1,53 @@
+//modules
+import { useState } from "react";
+import { v4 } from "uuid";
+//components
 import FunctionWords from "../Data/FunctionWords";
 import SuffixPrefixWords from "../Data/SuffixPrefixWords";
-import { useState } from "react";
 
 const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
+	//state for function word
 	const [functionWord, setFunctionWord] = useState("");
+	//state for prefix and suffix words
 	const [suffixPrefix, setSuffixPrefix] = useState("");
 
+
+	//sets the state for the function word
 	const handleFWordSubmit = (event) => {
 		event.preventDefault();
 		setFunctionWord(event.target[0].value);
 	};
-
+	
+	//sets the state for prefixes and suffix words
 	const handleSuffixPrefixSubmit = (event) => {
 		event.preventDefault();
 		setSuffixPrefix(event.target[0].value);
 	};
 
+	//whenever the user clicks the suffixes word it has a specific class and that character that starts with -.
 	const handleSelection = (event) => {
-		if (event.target.id === "suffixPrefix") {
-			setWordPoem([wordPoem + event.target.innerText]);
+		if (
+			event.target.id === "suffixPrefix" &&
+			event.target.innerText.charAt(0) === "-"
+		) {
+			//sets the state for it
+			setWordPoem([wordPoem + event.target.innerText.slice(1)]);
+		} else if (
+			//suffix that ends with the hyphen
+			event.target.id === "suffixPrefix" &&
+			event.target.innerText.endsWith("-")
+		) {
+			setWordPoem([wordPoem + " " + event.target.innerText]);
 		} else {
-			setWordPoem([wordPoem + event.target.innerText + " "]);
+			//function word that is being set onto the page
+			setWordPoem([wordPoem + " " + event.target.innerText]);
 		}
 	};
 
+
+	//form to loop through all the function word
+	//so for the first generate piece your sort through the array, however if the word starts with those four exceptions you capitalize them, and not capitalizing everything else. 
+	//for the second generate piece you just append two options - the suffix or the prefix.
 	return (
 		<>
 			<form
@@ -36,12 +60,25 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 				</label>
 				<select name="functionWords" id="functionWords">
 					<option value="">Select a function word</option>
-					{FunctionWords.sort().map((word, index) => {
-						return (
-							<option key={index} value={word}>
-								{word}
-							</option>
-						);
+					{FunctionWords.sort().map((word) => {
+						if (
+							word === "i" ||
+							word === "i'd" ||
+							word === "i'll" ||
+							word === "i've"
+						) {
+							return (
+								<option key={v4()} value={word}>
+									{word.charAt(0).toUpperCase() + word.slice(1)}
+								</option>
+							);
+						} else {
+							return (
+								<option key={v4()} value={word}>
+									{word}
+								</option>
+							);
+						}
 					})}
 				</select>
 				<button type="submit">Generate piece</button>
@@ -56,9 +93,9 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 				</label>
 				<select name="suffixPrefix" id="suffixPrefix">
 					<option value="">Select a prefix or suffix</option>
-					{SuffixPrefixWords.sort().map((word, index) => {
+					{SuffixPrefixWords.sort().map((word) => {
 						return (
-							<option key={index} value={word}>
+							<option key={v4()} value={word}>
 								{word}
 							</option>
 						);

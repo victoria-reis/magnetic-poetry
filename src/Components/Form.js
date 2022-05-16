@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 const Form = ({
 	setAutoFill,
 	setUserSubmit,
@@ -6,25 +8,28 @@ const Form = ({
 	show,
 	suggestions,
 	userSubmit,
-	setErrorState,
+	setErrorState
 }) => {
+
 	const handleSubmit = (event) => {
-		event.preventDefault();
-		if (userSubmit === "") {
-			setErrorState(true);
+		setErrorState(false)
+		if (userSubmit === ''){
+			setErrorState(true)
 		}
-
-		setUserSubmit(autoFill);
-
-		setAutoFill("");
-
 		console.log("userSubmit", userSubmit);
+		console.log("autofill", autoFill)
+		event.preventDefault();
+		setUserSubmit(autoFill);
+		setAutoFill("");
+	
 	};
-
+	console.log("userSubmit", userSubmit);
 	const handleChange = (event) => {
 		setErrorState(false);
 		setAutoFill(event.target.value.trim());
+		
 		setShow(true);
+		
 	};
 
 	const handleSelection = (wordObj) => {
@@ -56,13 +61,14 @@ const Form = ({
 						value={autoFill}
 						pattern="[a-zA-z]+"
 						placeholder="Start typing a word..."
+						
 					/>
 
 					{autoFill !== ""
-						? suggestions.map((wordObj, index) => {
+						? suggestions.map((wordObj) => {
 								return (
 									<option
-										key={index}
+										key={v4()}
 										style={{ display: show ? "block" : "none" }}
 										onClick={() => handleSelection(wordObj)}
 

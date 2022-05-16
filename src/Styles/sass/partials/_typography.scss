@@ -7,10 +7,16 @@ body {
 }
 
 .color {
-	color: blueviolet;
+	color: $black;
 }
 
 h1 {
 	font-size: 7rem;
 	font-weight: 400;
+}
+
+
+
+.magnetic {
+	font-size: 18px;
 }
