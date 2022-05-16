@@ -3,13 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 //components
-<<<<<<< Updated upstream
-import GenerateWords from "./GenerateWords";
-import Form from "./Form";
-=======
->>>>>>> Stashed changes
 import FunctionWordsSelect from "./FunctionWordsSelect";
-import CustomWordSelect from "./CustomWordSelect";
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
 
@@ -28,11 +22,6 @@ const AutoComplete = () => {
 	const [wordPoem, setWordPoem] = useState([]);
 	//error handling state
 	const [errorState, setErrorState] = useState(false);
-<<<<<<< Updated upstream
-	// const [loading, setLoading] = useState(false)
-  
-=======
->>>>>>> Stashed changes
 
 	//pass the autofill as a parameter to display whatever is returned as a state
 	useEffect(() => {
@@ -83,11 +72,7 @@ const AutoComplete = () => {
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
-<<<<<<< Updated upstream
-=======
 
-			<CustomWordSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
->>>>>>> Stashed changes
 		</section>
 	);
 };
