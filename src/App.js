@@ -21,12 +21,12 @@ function App() {
 						<Link to="/">Gallery</Link>
 					</li>
 					<li>
-						<Link to="auto">Create a poem</Link>
+						<Link to="createPoem">Create a poem</Link>
 					</li>
 				</ul>
 				<Routes>
 					<Route path="/" element={<Gallery />} />
-					<Route path="/auto" element={<AutoComplete />} />
+					<Route path="/createPoem" element={<AutoComplete />} />
 				</Routes>
 			</div>
 		</div>
