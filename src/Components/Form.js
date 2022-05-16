@@ -1,4 +1,4 @@
-//generate keys 
+//generate keys
 import { v4 } from "uuid";
 
 const Form = ({
@@ -21,18 +21,18 @@ const Form = ({
 		event.preventDefault();
 		setUserSubmit(autoFill);
 		setAutoFill("");
-	
+
 	};
 	console.log("userSubmit", userSubmit);
 	const handleChange = (event) => {
 		setErrorState(false);
 		setAutoFill(event.target.value.trim());
-		
+
 		setShow(true);
-		
+
 	};
 
-	
+
 	const handleSelection = (wordObj) => {
 		//auto fill equals to drop down menu suggestion
 		setAutoFill(wordObj.word);
@@ -66,26 +66,28 @@ const Form = ({
 						value={autoFill}
 						pattern="[a-zA-z]+"
 						placeholder="Start typing a word..."
-						
+
 					/>
 					{/* if autofill doesn't equal empty string show word suggestions in a down drop menu */}
-					
-						{suggestions.map((wordObj) => {
-								return (
-									<option
-										key={v4()}
-										style={{ display: show ? "block" : "none" }}
-										onClick={() => handleSelection(wordObj)}
 
-										value={wordObj.word}
-										className="color"
-										tabIndex="0"
-									>
-										{wordObj.word}
-									</option>
-								);
-						  })
-						}
+						{
+            autoFill !== "" ?
+              suggestions.map((wordObj) => {
+                  return (
+                    <option
+                      key={v4()}
+                      style={{ display: show ? "block" : "none" }}
+                      onClick={() => handleSelection(wordObj)}
+
+                      value={wordObj.word}
+                      className="color"
+                      tabIndex="0"
+                    >
+                      {wordObj.word}
+                    </option>
+                  );
+                }): null
+              }
 				</div>
 				{/* api search button */}
 				<button type="submit">Search</button>

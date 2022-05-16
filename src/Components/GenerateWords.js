@@ -37,7 +37,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 				},
 			})
 				.then((response) => {
-					
+
 					const array = response.data
 					setWordCollection(response.data);
 					setUserSubmit('')
@@ -113,7 +113,7 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 	];
 
 
-	//see what color was selected 
+	//see what color was selected
 	const handleChange = (event) => {
 		setColourChange(event.target.value);
 	};
@@ -140,99 +140,99 @@ const GenerateWords = ({ userSubmit, wordPoem, setWordPoem, errorState, setError
 	//then you map through each of the 50 words generated from the API and assign a style of the color/font that was selected from the dropdown.
 	//the final form, the display form, that will have the words that were clicked to be displayed onto the grey background. Color and fonts applied to them, depending on the selection.
 	return (
+    <>
 
-		<div>
-			{errorState ? <p>no data from api</p> : <p>good</p>}
-			<div>
-				<form>
-					<select name="ColorChange" id="colorChange" onChange={handleChange} >
-						<option value="" >Select a Color</option>
+        <ul className="wordCollection">
+        {errorState = true ? (
+          wordCollection.map((wordCollection) => {
+            return (
+              <li
+              key={v4()}
+              onClick={() => handleSelection(wordCollection)}
+              className={rotationRandomizer()}
+              style={{ color: colorChange, fontFamily: fontChange}}
+              >
+                {wordCollection.word}
+              </li>
+            );
+          })
+          ) : (
+            <p>Empty. Please type in words in the search bar.</p>
+            )}
+        </ul>
 
-						{data1.map((color, index) => {
-							return (<option key={index} value={colors[index]} style={{ color: colors[index] }}>{color.name}  </option>
+        <CustomWordSelect
+        setWordPoem={setWordPoem}
+        wordPoem={wordPoem}
+        rotationRandomizer = {rotationRandomizer}
+        colorChange = {colorChange}
+        />
+      <div>
+        {errorState ? <p>no data from api</p> : <p>good</p>}
+        <div>
+          <form>
+            <select name="ColorChange" id="colorChange" onChange={handleChange} >
+              <option value="" >Select a Color</option>
 
-							)
+              {data1.map((color, index) => {
+                return (<option key={index} value={colors[index]} style={{ color: colors[index] }}>{color.name}  </option>
 
-						})}
-					</select>
-				</form>
-				<form>
-					<select name="FontChange" id="FontChange" onChange={handleFontChange} >
-						<option value="">Select a Font</option>
+                )
 
-						{data2.map((font, index) => {
-							return (<option key={index} value={fonts[index]
-							}  style={{fontFamily: fonts[index]}}>{font.name} </option>
-							)
-						})}
-					</select>
-				</form>
+              })}
+            </select>
+          </form>
+          <form>
+            <select name="FontChange" id="FontChange" onChange={handleFontChange} >
+              <option value="">Select a Font</option>
 
-			</div>
-			
-      <CustomWordSelect
-      setWordPoem={setWordPoem}
-      wordPoem={wordPoem}
-      rotationRandomizer = {rotationRandomizer}
-      colorChange = {colorChange}
-      />
+              {data2.map((font, index) => {
+                return (<option key={index} value={fonts[index]
+                }  style={{fontFamily: fonts[index]}}>{font.name} </option>
+                )
+              })}
+            </select>
+          </form>
+        </div>
 
-			<ul className="wordCollection">
-			{errorState = true ? (
-				wordCollection.map((wordCollection) => {
-					return (
-						<li
-							key={v4()}
-							onClick={() => handleSelection(wordCollection)}
-							className={rotationRandomizer()}
-							style={{ color: colorChange, fontFamily: fontChange}}
-						>
-							{wordCollection.word}
-						</li>
-					);
-				})
-			) : (
-				<p>Empty. Please type in words in the search bar.</p>
-			)}
-			</ul>
+        <div>
+          <form
+            onSubmit={(event) => {
+              handleSubmit(event);
+            }}
+          >
+            <div className="poemDisplay">
+              {wordPoem[0]
+                ? wordPoem[0]
+                    .trim()
+                    .split(" ")
+                    .map((word) => {
+                      console.log(word);
+                      return <p key={v4()} className="magnetic"
+                        style={{ color: colorChange, fontFamily: fontChange }}>{word}
+                      </p>;
+                    })
+                : null}
+            </div>
 
-			<div>
-				<form
-					onSubmit={(event) => {
-						handleSubmit(event);
-					}}
-				>
-					<div className="poemDisplay">
-						{wordPoem[0]
-							? wordPoem[0]
-									.trim()
-									.split(" ")
-									.map((word) => {
-										console.log(word);
-										return <p key={v4()} className="magnetic"
-											style={{ color: colorChange, fontFamily: fontChange }}>{word}
-										</p>;
-									})
-							: null}
-					</div>
+            {/* this input is displayed none so we can style the words as magnetics*/}
+            <input
+              id="poem"
+              value={wordPoem}
+              className="poemBox"
+              onChange={handleSelection}
+              placeholder="Select the words above to create a poem!"
+              style={{ color: colorChange, fontFamily: fontChange }}
 
-					{/* this input is displayed none so we can style the words as magnetics*/}
-					<input
-						id="poem"
-						value={wordPoem}
-						className="poemBox"
-						onChange={handleSelection}
-						placeholder="Select the words above to create a poem!"
-						style={{ color: colorChange, fontFamily: fontChange }}
-						
-					/>
+            />
 
-					<button type="submit">Submit</button>
-					<button onClick={handleClear}>ClearAll</button>
-					<button onClick={handleOne}>Clear Last Word</button>
-				</form>
-			</div>
-		</div>
+            <button type="submit">Submit</button>
+            <button onClick={handleClear}>ClearAll</button>
+            <button onClick={handleOne}>Clear Last Word</button>
+          </form>
+        </div>
+      </div>
+    </>
 	);
 };
 
