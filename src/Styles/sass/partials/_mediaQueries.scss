@@ -68,6 +68,10 @@
 }
 
 @media (max-width: 440px) {
+  .wrapper {
+    width: 100%;
+  }
+
 	.searchForm {
 		input {
 			width: 210px;
@@ -77,4 +81,49 @@
 			margin-left: auto;
 		}
 	}
+
+  h1 {
+    background-image: none;
+    padding: 50px 25px 50px;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .suffixPrefixForms {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+
+    > * {
+    padding-bottom: 10px;
+    }
+
+    form > * {
+    margin-bottom: 10px;
+    }
+  }
+
+  .customWordForm {
+    display: flex;
+    flex-direction: column;
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  .poemDisplay{
+    text-align: center;
+  }
+
+  .poemColorFont {
+    flex-direction: column;
+  }
+
+  .poemButtons{
+    flex-direction: column;
+    margin-top: 40px;
+  }
 }
+
+
