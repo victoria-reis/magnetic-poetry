@@ -585,7 +585,7 @@ select {
 }
 
 .navBar {
-  margin: 20px auto;
+  margin: 70px auto;
   width: 35%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -594,20 +594,27 @@ select {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.navBar a {
+.navBar li {
+  background-image: url(../assets/detailedleafoutline.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 30px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.navBar li span {
+  display: block;
+}
+.navBar li a {
   color: inherit;
-  padding: 10px 15px;
-  background-color: white;
-  -webkit-box-shadow: 0 1px 2px 0 #999;
-          box-shadow: 0 1px 2px 0 #999;
+  padding: 15px;
 }
-.navBar a:hover {
-  background-color: gainsboro;
-}
-.navBar a:active {
-  background-color: #999;
-}
-
 .poems {
   display: -webkit-box;
   display: -ms-flexbox;
