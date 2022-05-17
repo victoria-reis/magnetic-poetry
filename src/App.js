@@ -34,8 +34,8 @@ function App() {
 					<Route path="/" element={<Gallery />} />
 					<Route path="/createPoem" element={<AutoComplete />} />
 				</Routes>
+				<Footer />
 			</div>
-			<Footer />
 		</div>
 	);
 }

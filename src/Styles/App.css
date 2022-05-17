@@ -246,12 +246,27 @@ body {
 }
 
 h1 {
-  font-size: 7rem;
+  font-size: 6rem;
   font-weight: 400;
 }
 
 .magnetic {
   font-size: 18px;
+}
+
+h2,
+h3 {
+  font-weight: 400;
+}
+
+select {
+  font-size: 1rem;
+}
+
+button {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.2rem;
 }
 
 *,
@@ -283,27 +298,30 @@ ul {
 a {
   text-decoration: none;
   cursor: pointer;
+  color: #2C2C2C;
+}
+
+p {
+  color: #2C2C2C;
 }
 
 button {
-  color: #084b6d;
+  color: #001510;
   background-color: transparent;
-  padding: 18px 36px;
-  border: 2px solid #084b6d;
-  font-size: 0.8rem;
-  font-weight: bold;
-  line-height: 1.2rem;
+  padding: 10px 30px;
+  border: 2px solid #001510;
   text-align: center;
   cursor: pointer;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  border-radius: 10px;
 }
 button:hover {
-  background-color: #084b6d;
+  background-color: #001510;
   color: #fff;
 }
 button:focus {
-  background-color: #084b6d;
+  background-color: #001510;
   color: #fff;
 }
 
@@ -311,12 +329,12 @@ select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  color: #084b6d;
+  color: #001510;
   padding: 10px 30px 10px 10px;
   background-color: #fff;
-  border: none;
-  border-bottom: 1px solid #eee;
-  font-size: 0.8rem;
+  border: 2px solid #001510;
+  border-radius: 10px;
+  font-size: 1rem;
   line-height: 1.2rem;
   text-transform: uppercase;
   background-image: url(../assets/caret-down-solid.svg);
@@ -403,18 +421,6 @@ select {
 
 .poemBox {
   display: none;
-  border: none;
-  padding: 20px;
-  margin: 10px;
-  background-color: rgb(255, 254, 230);
-  width: 900px;
-  height: 400px;
-  overflow-wrap: anywhere;
-  resize: none;
-  line-height: 40px;
-  pointer-events: none;
-  -webkit-text-decoration: solid;
-          text-decoration: solid;
 }
 
 .poemDisplay {
@@ -422,6 +428,7 @@ select {
   width: 80%;
   height: 300px;
   background-color: #b2b2b2;
+  overflow-y: auto;
 }
 
 .searchForm {
@@ -529,7 +536,7 @@ select {
 .poems li {
   width: 40%;
   padding: 50px 30px 30px 30px;
-  border: 1px solid green;
+  border: 1px solid #001510;
   line-height: 30px;
   position: relative;
   background-color: #FFFFFF;
@@ -546,6 +553,7 @@ select {
       align-self: start;
 }
 .poems button {
+  overflow: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -557,7 +565,7 @@ select {
           align-items: center;
   padding: 20px;
   border: none;
-  background-color: antiquewhite;
+  background-image: url(../assets/button.jpg);
   border-radius: 50%;
   width: 70px;
   height: 70px;
@@ -566,6 +574,9 @@ select {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+.poems button svg {
+  width: 80%;
 }
 
 .footer {

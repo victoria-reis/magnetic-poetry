@@ -1,17 +1,17 @@
 .poemBox {
 	display: none;
-	border: none;
-	padding: 20px;
-	margin: 10px;
-	background-color: rgb(255, 254, 230);
-	width: 900px;
-	height: 400px;
-	overflow-wrap: anywhere;
-	resize: none;
-	line-height: 40px;
-	// word-spacing: 40px;
-	pointer-events: none;
-	text-decoration: solid;
+	// border: none;
+	// padding: 20px;
+	// margin: 10px;
+	// background-color: rgb(255, 230, 230);
+	// width: 900px;
+	// height: 400px;
+	// overflow-wrap: anywhere;
+	// resize: none;
+	// line-height: 40px;
+	// // word-spacing: 40px;
+	// pointer-events: none;
+	// text-decoration: solid;
 }
 
 .poemDisplay {
@@ -19,4 +19,5 @@
 	width: 80%;
 	height: 300px;
 	background-color: #b2b2b2;
+	overflow-y: auto;
 }

@@ -11,12 +11,25 @@ body {
 }
 
 h1 {
-	font-size: 7rem;
+	font-size: 6rem;
 	font-weight: 400;
 }
 
-
-
 .magnetic {
 	font-size: 18px;
+}
+
+h2, 
+h3 {
+	font-weight: 400;
+}
+
+select {
+	font-size: 1rem;
+}
+
+button {
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 1.2rem;
 }

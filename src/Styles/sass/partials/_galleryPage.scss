@@ -6,7 +6,7 @@
 	li {
 		width: 40%;
 		padding: 50px 30px 30px 30px;
-		border: 1px solid green;
+		border: 1px solid $darkgreen;
 		line-height: 30px;
 		position: relative;
 		background-color: $white;
@@ -18,12 +18,13 @@
 		}
 	}
 	button {
+		overflow: none;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding: 20px;
 		border: none;
-		background-color: antiquewhite;
+		background-image: url(../assets/button.jpg);
 		border-radius: 50%;
 		width: 70px;
 		height: 70px;
@@ -31,5 +32,8 @@
 		top: 0;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		svg {
+			width:80%;
+		}
 	}
 }

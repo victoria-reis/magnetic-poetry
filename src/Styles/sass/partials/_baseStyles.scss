@@ -28,37 +28,40 @@ ul {
 a {
 	text-decoration: none;
 	cursor: pointer;
+	color: $black;
+}
+
+p {
+	color:$black;
 }
 
 button {
-	color: #084b6d;
+	color: $darkgreen;
 	background-color: transparent;
-	padding: 18px 36px;
-	border: 2px solid #084b6d;
-	font-size: 0.8rem;
-	font-weight: bold;
-	line-height: 1.2rem;
+	padding: 10px 30px;
+	border: 2px solid $darkgreen;
 	text-align: center;
 	cursor: pointer;
 	transition: 0.3s;
+	border-radius: 10px;
 	&:hover {
-		background-color: #084b6d;
+		background-color: $darkgreen;
 		color: #fff;
 	}
 	&:focus {
-		background-color: #084b6d;
+		background-color: $darkgreen;
 		color: #fff;
 	}
 }
 
 select {
   appearance: none;
-  color: #084b6d;
+  color: $darkgreen;
   padding: 10px 30px 10px 10px ;
   background-color: #fff;
-  border: none;
-  border-bottom: 1px solid #eee;
-  font-size: 0.8rem;
+  border: 2px solid $darkgreen;
+  border-radius: 10px;
+  font-size: 1rem;
   line-height: 1.2rem;
   text-transform: uppercase;
   background-image: url(../assets/caret-down-solid.svg);
