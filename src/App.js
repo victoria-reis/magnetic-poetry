@@ -6,6 +6,7 @@ import { ToastContainer, Zoom, } from "react-toastify";
 //Config
 import AutoComplete from "./Components/AutoComplete";
 import Gallery from "./Components/Gallery";
+import Footer from "./Components/Footer";
 // import GenerateWords from "./Components/GenerateWords";
 
 //styling
@@ -34,6 +35,7 @@ function App() {
 					<Route path="/createPoem" element={<AutoComplete />} />
 				</Routes>
 			</div>
+			<Footer />
 		</div>
 	);
 }

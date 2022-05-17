@@ -330,6 +330,7 @@ select {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  min-height: 100vh;
 }
 
 .wordCollection {
@@ -537,4 +538,9 @@ select {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.footer {
+  padding: 20px 0;
+  text-align: center;
 }

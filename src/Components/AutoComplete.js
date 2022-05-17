@@ -9,6 +9,7 @@ import GenerateWords from "./GenerateWords";
 import Form from "./Form";
 import { toast } from "react-toastify";
 
+
 const AutoComplete = () => {
 	//state for input field
 	const [autoFill, setAutoFill] = useState("");
@@ -75,6 +76,7 @@ const AutoComplete = () => {
 			/>
 
 			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
+			
 
 		</section>
 	);

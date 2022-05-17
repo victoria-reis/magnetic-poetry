@@ -33,6 +33,7 @@ const Gallery = () => {
 			}
 			// here we use Firebase's .val() method to parse our database info the way we want it
 			console.log(response.val());
+			newState.reverse();
 			setPoems(newState);
 		});
 	}, []);
