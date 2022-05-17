@@ -208,46 +208,44 @@ const GenerateWords = ({
 					</form>
 				</div>
 
-				<div className="poemContent">
-					<form
-						className="poemForm"
-						onSubmit={(event) => {
-							handleSubmit(event);
-						}}
-					>
-						<div className="poemDisplay" aria-hidden="true">
-							{wordPoem[0]
-								? wordPoem[0]
-										.trim()
-										.split(" ")
-										.map((word) => {
-											console.log(word);
-											return (
-												<p
-													key={v4()}
-													className="magnetic"
-													style={{ color: colorChange, fontFamily: fontChange }}
-												>
-													{word}
-												</p>
-											);
-										})
-								: null}
-						</div>
-						{/* this input is displayed none so we can style the words as magnetics*/}
-						<input
-							id="poem"
-							value={wordPoem}
-							className="sr-only"
-							onChange={handleSelection}
-							placeholder="Select the words above to create a poem!"
-							style={{ color: colorChange, fontFamily: fontChange }}
-						/>
-						<button className="poemSubmit" type="submit">
-							Submit
-						</button>
-					</form>
-				</div>
+				<form
+					className="poemForm"
+					onSubmit={(event) => {
+						handleSubmit(event);
+					}}
+				>
+					<div className="poemDisplay" aria-hidden="true">
+						{wordPoem[0]
+							? wordPoem[0]
+									.trim()
+									.split(" ")
+									.map((word) => {
+										console.log(word);
+										return (
+											<p
+												key={v4()}
+												className="magnetic"
+												style={{ color: colorChange, fontFamily: fontChange }}
+											>
+												{word}
+											</p>
+										);
+									})
+							: null}
+					</div>
+					{/* this input is displayed none so we can style the words as magnetics*/}
+					<input
+						id="poem"
+						value={wordPoem}
+						className="sr-only"
+						onChange={handleSelection}
+						placeholder="Select the words above to create a poem!"
+						style={{ color: colorChange, fontFamily: fontChange }}
+					/>
+					<button className="poemSubmit" type="submit">
+						Submit
+					</button>
+				</form>
 
 				<div className="poemButtons">
 					<button className="poemClearAll" onClick={handleClear}>

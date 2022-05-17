@@ -26,10 +26,10 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
-
-.poemContent {
-	margin-top: 70px;
+	select {
+		margin: 1.5px;
+		width: 195px;
+	}
 }
 
 .poemForm {
@@ -39,23 +39,28 @@
 }
 
 .poemDisplay {
-	margin: 0 auto;
-	height: 300px;
+	margin: 0 20px;
+	width: 50vw;
+	max-width: 755px;
+	min-height: 400px;
 	background-color: #b2b2b2;
-	overflow-y: auto;
-	min-width: 45vw;
-	margin: 0px 40px 0px;
+	border-radius: 20px;
+	padding: 10px;
 }
-
 
 .poemSubmit {
 	margin-top: 10px;
 	align-self: center;
+	width: 200px;
+	font-size: 1.5rem;
 }
 
 .poemButtons {
 	display: flex;
 	flex-direction: column;
+	button {
+		width: 195px;
+	}
 }
 
 .poemClearAll {

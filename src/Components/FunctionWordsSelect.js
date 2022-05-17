@@ -120,7 +120,12 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem, colorChange }) => {
 						className={rotationRandomizer()}
 						style={{ color: colorChange }}
 					>
-						{functionWord}
+						{functionWord === "i" ||
+						functionWord === "i'd" ||
+						functionWord === "i'll" ||
+						functionWord === "i've"
+							? functionWord.charAt(0).toUpperCase() + functionWord.slice(1)
+							: functionWord}
 					</div>
 				) : null}
 				{suffixPrefix ? (

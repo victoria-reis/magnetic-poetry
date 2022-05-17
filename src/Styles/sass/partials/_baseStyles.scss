@@ -1,8 +1,14 @@
 //general styles
-*,
-h1 {
+* {
 	margin: 0;
 	padding: 0;
+}
+
+body {
+	background-image: url(../assets/5333978.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 h1,
@@ -32,12 +38,12 @@ a {
 }
 
 p {
-	color:$black;
+	color: $black;
 }
 
 button {
 	color: $darkgreen;
-	background-color: transparent;
+	background-color: #fff;
 	padding: 8px 20px;
 	border: 2px solid $darkgreen;
 	text-align: center;
@@ -54,28 +60,31 @@ button {
 	}
 }
 
+input[type="search"],
+input[type="text"] {
+	border: 2px solid $darkgreen;
+	border-radius: 10px;
+}
+
 select {
-  appearance: none;
-  color: $darkgreen;
-  padding: 10px 30px 10px 10px ;
-  background-color: #fff;
-  border: 2px solid $darkgreen;
-  border-radius: 10px;
-  font-size: 1rem;
-  line-height: 1.2rem;
-  text-transform: uppercase;
-  background-image: url(../assets/caret-down-solid.svg);
-  background-repeat: no-repeat;
-  background-size: 15px;
-  background-position: 97% center;
+	appearance: none;
+	margin: 2px 0;
+	color: $darkgreen;
+	padding: 10px 30px 10px 10px;
+	background-color: #fff;
+	border: 2px solid $darkgreen;
+	border-radius: 10px;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	text-transform: uppercase;
+	background-image: url(../assets/caret-down-solid.svg);
+	background-repeat: no-repeat;
+	background-size: 15px;
+	background-position: 97% center;
 }
 
 .App {
 	min-height: 100vh;
-	background-image: url(../assets/5333978.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
 }
 
 .magnetic {

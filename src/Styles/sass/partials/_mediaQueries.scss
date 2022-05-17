@@ -1,0 +1,80 @@
+@media (max-width: 950px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	.navBar {
+		width: 45%;
+	}
+
+	.wordCollection {
+		width: 100%;
+	}
+
+	.poemDisplayContainer {
+		flex-direction: column;
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+		width: 100%;
+	}
+
+	.poemDisplay {
+		margin: 10px 20px;
+		width: 80vw;
+	}
+
+	.poemColorFont {
+		// display: flex;
+		flex-direction: row;
+		// justify-content: center;
+		// align-items: center;
+		// select {
+		// 	margin: 1.5px;
+		// 	width: 195px;
+		// }
+	}
+
+	.poemButtons {
+		// display: flex;
+		flex-direction: row;
+		button {
+			margin: 10px 2px;
+		}
+	}
+}
+
+@media (max-width: 550px) {
+	.wrapper {
+		width: 95%;
+	}
+
+	.poemDisplay {
+		margin: 10px;
+		width: 90vw;
+	}
+
+	.suffixPrefixForms {
+		flex-direction: column;
+		form {
+			margin: 0 auto;
+		}
+	}
+
+	.footer {
+		padding: 10px 0;
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 440px) {
+	.searchForm {
+		input {
+			width: 210px;
+		}
+
+		button {
+			margin-left: auto;
+		}
+	}
+}

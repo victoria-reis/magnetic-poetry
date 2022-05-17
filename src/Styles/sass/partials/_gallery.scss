@@ -4,29 +4,30 @@
 	width: 35%;
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	li {
 		background-image: url(../assets/detailedleafoutline.png);
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: contain;
-			padding: 30px;
-			text-align: center;
-			display: flex;
-			align-items: center;
-			span {
-				display: block;
-			}
-			a {
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		padding: 30px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		span {
+			display: block;
+		}
+		a {
 			color: inherit;
 			padding: 15px;
-	
-			&:hover {
-				// background-color: gainsboro;
-			}
-	
-			&:active {
-				// background-color: #999;
-			}
+
+			// &:hover {
+			// 	// background-color: gainsboro;
+			// }
+
+			// &:active {
+			// 	// background-color: #999;
+			// }
 		}
 	}
 }
@@ -37,15 +38,17 @@
 	justify-content: space-around;
 
 	li {
-		width: 40%;
-		padding: 50px 30px 30px 30px;
+		width: 30%;
+		min-width: 290px;
+		padding: 50px 20px 20px 20px;
 		border: 1px solid $darkgreen;
 		line-height: 30px;
 		position: relative;
 		background-color: $white;
 		display: flex;
 		justify-content: center;
-		margin: 50px 0;
+		align-self: flex-start;
+		margin: 50px 10px;
 		div {
 			align-self: start;
 		}
@@ -66,7 +69,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		svg {
-			width:80%;
+			width: 80%;
 		}
 	}
 }
