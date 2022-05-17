@@ -345,6 +345,7 @@ select {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  margin-top: 50px;
 }
 .wordCollection li:hover {
   background-color: gainsboro;
@@ -495,6 +496,25 @@ select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.customWordCollection {
+  margin: 0 auto;
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.customInputContainer {
+  border: 1px solid #2C2C2C;
+  position: absolute;
+  z-index: 1;
 }
 
 .poems {

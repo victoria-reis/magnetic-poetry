@@ -157,7 +157,7 @@ const GenerateWords = ({
 				colorChange={colorChange}
 			/> */}
 			<ul className="wordCollection">
-				{errorState === false ? (
+				{errorState !== false ? (
 					wordCollection.map((wordCollection) => {
 						return (
 							<li
