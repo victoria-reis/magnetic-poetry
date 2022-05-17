@@ -239,6 +239,8 @@ html {
 body {
   font-size: 125%;
   font-family: "Kanit", sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .color {
@@ -515,6 +517,77 @@ select {
   border: 1px solid #2C2C2C;
   position: absolute;
   z-index: 1;
+}
+
+.poemDisplayContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.poemColorFont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.poemContent {
+  margin-top: 70px;
+}
+
+.poemForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.poemDisplay {
+  min-width: 40vw;
+  margin: 0px 40px 0px;
+}
+
+.poemSubmit {
+  margin-top: 10px;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.poemButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.poemClearAll {
+  margin-bottom: 3px;
 }
 
 .poems {
