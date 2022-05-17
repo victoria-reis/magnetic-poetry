@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import CustomWordSelect from "./CustomWordSelect";
 
 
-const AutoComplete = () => {
+const CreatePoem = () => {
 	//state for input field
 	const [autoFill, setAutoFill] = useState("");
 	//autocomplete feature state, with options that drop down
@@ -60,7 +60,7 @@ const AutoComplete = () => {
 				setShow={setShow}
 				autoFill={autoFill}
 				show={show}
-				AutoComplete={AutoComplete}
+				CreatePoem={CreatePoem}
 				suggestions={suggestions}
 				setErrorState={setErrorState}
 				userSubmit={userSubmit}
@@ -94,4 +94,4 @@ const AutoComplete = () => {
 	);
 };
 
-export default AutoComplete;
+export default CreatePoem;

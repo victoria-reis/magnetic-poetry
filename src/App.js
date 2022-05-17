@@ -4,7 +4,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import { ToastContainer, Zoom } from "react-toastify";
 
 //Config
-import AutoComplete from "./Components/AutoComplete";
+import CreatePoem from "./Components/CreatePoem";
 import Gallery from "./Components/Gallery";
 import Footer from "./Components/Footer";
 
@@ -27,7 +27,7 @@ function App() {
 				<ToastContainer draggable={true} transition={Zoom} autoClose={8000} />
 				<Routes>
 					<Route path="/" element={<Gallery />} />
-					<Route path="/createPoem" element={<AutoComplete />} />
+					<Route path="/createPoem" element={<CreatePoem />} />
 				</Routes>
 				<Footer />
 			</div>
