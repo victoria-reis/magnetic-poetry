@@ -147,7 +147,7 @@ const GenerateWords = ({
 	return (
 		<>
 			<ul className="wordCollection">
-				{errorState !== false ? (
+				{errorState !== true ? (
 					wordCollection.map((wordCollection) => {
 						return (
 							<li
