@@ -1,20 +1,32 @@
 .navBar {
 	// border: 1px solid red;
-	margin: 20px auto;
+	margin: 70px auto;
 	width: 35%;
 	display: flex;
 	justify-content: space-between;
-	a {
-		color: inherit;
-		padding: 10px 15px;
-		background-color: white;
-		box-shadow: 0 1px 2px 0 #999;
-
-		&:hover {
-			background-color: gainsboro;
-		}
-		&:active {
-			background-color: #999;
+	li {
+		background-image: url(../assets/detailedleafoutline.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			padding: 30px;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			span {
+				display: block;
+			}
+			a {
+			color: inherit;
+			padding: 15px;
+	
+			&:hover {
+				// background-color: gainsboro;
+			}
+	
+			&:active {
+				// background-color: #999;
+			}
 		}
 	}
 }

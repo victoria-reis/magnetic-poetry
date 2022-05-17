@@ -21,7 +21,7 @@ function App() {
 						<Link to="/">Gallery</Link>
 					</li>
 					<li>
-						<Link to="createPoem">Create a poem</Link>
+						<Link to="createPoem">Create a <span>poem</span></Link>
 					</li>
 				</ul>
 				<ToastContainer draggable={true} transition={Zoom} autoClose={8000} />
