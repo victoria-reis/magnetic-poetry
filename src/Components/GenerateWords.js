@@ -175,9 +175,11 @@ const GenerateWords = ({
 				)}
 			</ul>
 
-			<div>
-				{errorState ? <p>no data from api</p> : <p>good</p>}
-				<div>
+			<div className="poemDisplayContainer">
+
+				{/* {errorState ? <p>no data from api</p> : <p>good</p>} */}
+
+				<div className="poemColorFont">
 					<form>
 						<select name="ColorChange" id="colorChange" onChange={handleChange}>
 							<option value="">Select a Color</option>
@@ -195,6 +197,7 @@ const GenerateWords = ({
 							})}
 						</select>
 					</form>
+
 					<form>
 						<select
 							name="FontChange"
@@ -216,10 +219,15 @@ const GenerateWords = ({
 							})}
 						</select>
 					</form>
+
 				</div>
 
-				<div>
+
+
+
+				<div className="poemContent">
 					<form
+            className="poemForm"
 						onSubmit={(event) => {
 							handleSubmit(event);
 						}}
@@ -243,7 +251,6 @@ const GenerateWords = ({
 										})
 								: null}
 						</div>
-
 						{/* this input is displayed none so we can style the words as magnetics*/}
 						<input
 							id="poem"
@@ -253,13 +260,17 @@ const GenerateWords = ({
 							placeholder="Select the words above to create a poem!"
 							style={{ color: colorChange, fontFamily: fontChange }}
 						/>
-
-						<button type="submit">Submit</button>
-						<button onClick={handleClear}>ClearAll</button>
-						<button onClick={handleOne}>Clear Last Word</button>
+          <button  className="poemSubmit" type="submit">Submit</button>
 					</form>
 				</div>
+
+        <div className="poemButtons">
+          <button className="poemClearAll" onClick={handleClear}>ClearAll</button>
+          <button onClick={handleOne}>Clear Last Word</button>
+        </div>
+
 			</div>
+
 		</>
 	);
 };
