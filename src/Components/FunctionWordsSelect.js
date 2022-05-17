@@ -4,7 +4,7 @@ import { v4 } from "uuid";
 //components
 import FunctionWords from "../Data/FunctionWords";
 import SuffixPrefixWords from "../Data/SuffixPrefixWords";
-import { rotationRandomizer } from "./Other";
+import { rotationRandomizer } from "./Randomizer";
 
 const FunctionWordsSelect = ({ setWordPoem, wordPoem, colorChange }) => {
 	//state for function word

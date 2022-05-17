@@ -1,3 +1,19 @@
+.wordCollection {
+	margin: 20px auto;
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	li {
+		&:hover {
+			background-color: gainsboro;
+		}
+		&:active {
+			background-color: #999;
+		}
+	}
+}
+
 .poemDisplayContainer {
 	display: flex;
 	justify-content: center;

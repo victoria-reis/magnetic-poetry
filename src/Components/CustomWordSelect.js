@@ -1,6 +1,6 @@
 //modules
 import { useState } from "react";
-import { rotationRandomizer } from "./Other";
+import { rotationRandomizer } from "./Randomizer";
 
 const CustomWordSelect = ({ wordPoem, setWordPoem, colorChange }) => {
 	//states

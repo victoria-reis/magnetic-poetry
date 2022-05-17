@@ -353,25 +353,6 @@ select {
   background-size: cover;
 }
 
-.wordCollection {
-  margin: 20px auto;
-  width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-.wordCollection li:hover {
-  background-color: gainsboro;
-}
-.wordCollection li:active {
-  background-color: #999;
-}
-
 .magnetic {
   background-color: #FFFFFF;
   -webkit-box-shadow: 0 1px 2px 0 #999;
@@ -417,14 +398,6 @@ select {
           transform: rotate(4deg);
   transform: rotate(4deg);
   transform: rotate(4deg);
-}
-
-.poemDisplay {
-  margin: 0 auto;
-  width: 80%;
-  height: 300px;
-  background-color: #b2b2b2;
-  overflow-y: auto;
 }
 
 .searchForm {
@@ -486,6 +459,19 @@ select {
   margin: 15px auto;
 }
 
+.customWordForm {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.customWordForm input {
+  padding: 10px;
+}
+
 .customWordCollection {
   margin: 10px auto;
   min-height: 47px;
@@ -500,17 +486,23 @@ select {
           justify-content: center;
 }
 
-.customWordForm {
-  margin: 0 auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+.wordCollection {
+  margin: 20px auto;
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
-.customWordForm input {
-  padding: 10px;
+.wordCollection li:hover {
+  background-color: gainsboro;
+}
+.wordCollection li:active {
+  background-color: #999;
 }
 
 .poemDisplayContainer {
