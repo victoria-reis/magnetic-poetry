@@ -5,6 +5,14 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+	li {
+		&:hover {
+			background-color: gainsboro;
+		}
+		&:active {
+			background-color: #999;
+		}
+	}
 }
 
 .magnetic {
@@ -15,12 +23,6 @@
 	margin: 7px;
 	cursor: pointer;
 	transition: 0.2s;
-	&:hover {
-		background-color: gainsboro;
-	}
-	&:active {
-		background-color: #999;
-	}
 }
 
 .style-1 {
@@ -51,10 +53,4 @@
 	transform: rotate(4deg);
 	transform: rotate(4deg);
 	transform: rotate(4deg);
-}
-
-.plate {
-	width: 600px;
-	height: 300px;
-	background-color: wheat;
 }

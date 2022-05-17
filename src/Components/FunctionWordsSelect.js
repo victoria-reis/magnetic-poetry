@@ -4,20 +4,20 @@ import { v4 } from "uuid";
 //components
 import FunctionWords from "../Data/FunctionWords";
 import SuffixPrefixWords from "../Data/SuffixPrefixWords";
+import { rotationRandomizer } from "./Other";
 
-const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
+const FunctionWordsSelect = ({ setWordPoem, wordPoem, colorChange }) => {
 	//state for function word
 	const [functionWord, setFunctionWord] = useState("");
 	//state for prefix and suffix words
 	const [suffixPrefix, setSuffixPrefix] = useState("");
-
 
 	//sets the state for the function word
 	const handleFWordSubmit = (event) => {
 		event.preventDefault();
 		setFunctionWord(event.target[0].value);
 	};
-	
+
 	//sets the state for prefixes and suffix words
 	const handleSuffixPrefixSubmit = (event) => {
 		event.preventDefault();
@@ -44,18 +44,17 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 		}
 	};
 
-
 	//form to loop through all the function word
-	//so for the first generate piece your sort through the array, however if the word starts with those four exceptions you capitalize them, and not capitalizing everything else. 
+	//so for the first generate piece your sort through the array, however if the word starts with those four exceptions you capitalize them, and not capitalizing everything else.
 	//for the second generate piece you just append two options - the suffix or the prefix.
 	return (
-		<>
+		<div className="suffixPrefixForms">
 			<form
 				onSubmit={(event) => {
 					handleFWordSubmit(event);
 				}}
 			>
-				<label htmlFor="functionWords">
+				<label htmlFor="functionWords" className="sr-only">
 					Select a function word. Example: they, somebody, don't, above, etc.
 				</label>
 				<select name="functionWords" id="functionWords">
@@ -81,14 +80,14 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 						}
 					})}
 				</select>
-				<button type="submit">Generate piece</button>
+				<button type="submit">Add</button>
 			</form>
 			<form
 				onSubmit={(event) => {
 					handleSuffixPrefixSubmit(event);
 				}}
 			>
-				<label htmlFor="suffixPrefix">
+				<label htmlFor="suffixPrefix" className="sr-only">
 					Select a suffix or prefix. Example: un-, auto-, -able, -cy, etc.
 				</label>
 				<select name="suffixPrefix" id="suffixPrefix">
@@ -101,25 +100,35 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem }) => {
 						);
 					})}
 				</select>
-				<button type="submit">Generate piece</button>
+				<button type="submit">Add</button>
 			</form>
 
-			<p
-				onClick={(event) => {
-					handleSelection(event);
-				}}
-			>
-				{functionWord}
-			</p>
-			<p
-				onClick={(event) => {
-					handleSelection(event);
-				}}
-				id="suffixPrefix"
-			>
-				{suffixPrefix}
-			</p>
-		</>
+			<div className="fWordsCollection">
+				{functionWord ? (
+					<div
+						onClick={(event) => {
+							handleSelection(event);
+						}}
+						className={rotationRandomizer()}
+						style={{ color: colorChange }}
+					>
+						{functionWord}
+					</div>
+				) : null}
+				{suffixPrefix ? (
+					<div
+						onClick={(event) => {
+							handleSelection(event);
+						}}
+						className={rotationRandomizer()}
+						id="suffixPrefix"
+						style={{ color: colorChange }}
+					>
+						{suffixPrefix}
+					</div>
+				) : null}
+			</div>
+		</div>
 	);
 };
 

@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 //components
 import FunctionWordsSelect from "./FunctionWordsSelect";
 import GenerateWords from "./GenerateWords";
 import Form from "./Form";
 import { toast } from "react-toastify";
+import CustomWordSelect from "./CustomWordSelect";
 
 const AutoComplete = () => {
 	//state for input field
@@ -24,6 +24,8 @@ const AutoComplete = () => {
 	const [wordPoem, setWordPoem] = useState([]);
 	//error handling state
 	const [errorState, setErrorState] = useState(false);
+	//state for the color
+	const [colorChange, setColourChange] = useState("");
 
 	//pass the autofill as a parameter to display whatever is returned as a state
 	useEffect(() => {
@@ -42,7 +44,7 @@ const AutoComplete = () => {
 				})
 				.catch((error) => {
 					if (error) {
-						toast.error ('Error 404. Request not found')
+						toast.error("Error 404. Request not found");
 					}
 				});
 		}
@@ -63,6 +65,18 @@ const AutoComplete = () => {
 				userSubmit={userSubmit}
 			/>
 
+			<FunctionWordsSelect
+				setWordPoem={setWordPoem}
+				wordPoem={wordPoem}
+				colorChange={colorChange}
+			/>
+
+			<CustomWordSelect
+				setWordPoem={setWordPoem}
+				wordPoem={wordPoem}
+				colorChange={colorChange}
+			/>
+
 			<GenerateWords
 				setWordCollection={setWordCollection}
 				userSubmit={userSubmit}
@@ -72,10 +86,9 @@ const AutoComplete = () => {
 				errorState={errorState}
 				setErrorState={setErrorState}
 				setUserSubmit={setUserSubmit}
+				colorChange={colorChange}
+				setColourChange={setColourChange}
 			/>
-
-			<FunctionWordsSelect setWordPoem={setWordPoem} wordPoem={wordPoem} />
-
 		</section>
 	);
 };
