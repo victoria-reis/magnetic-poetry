@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import firebase from "../firebase";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
-import { rotationRandomizer } from "./Other";
+import { rotationRandomizer } from "./Randomizer";
 
 const Gallery = () => {
 	//state to set the poems on the page

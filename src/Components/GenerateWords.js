@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //function from a component ./Other
-import { rotationRandomizer } from "./Other";
+import { rotationRandomizer } from "./Randomizer";
 
 const GenerateWords = ({
 	userSubmit,

@@ -2,20 +2,20 @@
 @import "./partials/setup";
 
 // Base Styles
-@import "./partials/colors";
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap");
+@import "./partials/variables";
 @import "./partials/typography";
 @import "./partials/baseStyles";
 
 // generate words styles
-@import "./partials/50wordsPieces";
-@import "./partials/poemInput";
-@import "./partials/searchBarAndInputs";
+@import "./partials/form";
+@import "./partials/functionWordSelect";
 @import "./partials/customWordSelect";
 @import "./partials/generateWords";
 
 
 //gallery page styles
-@import "./partials/galleryPage";
+@import "./partials/gallery";
 
 //footer styles
 @import "./partials/footer";
