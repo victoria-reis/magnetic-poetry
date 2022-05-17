@@ -552,7 +552,11 @@ select {
 }
 
 .poemDisplay {
-  min-width: 40vw;
+  margin: 0 auto;
+  height: 300px;
+  background-color: #b2b2b2;
+  overflow-y: auto;
+  min-width: 45vw;
   margin: 0px 40px 0px;
 }
 
