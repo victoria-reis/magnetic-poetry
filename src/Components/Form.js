@@ -9,26 +9,22 @@ const Form = ({
 	show,
 	suggestions,
 	userSubmit,
-	setErrorState
+	setErrorState,
 }) => {
-
 	const handleSubmit = (event) => {
-		if (userSubmit === ''){
-			setErrorState(true)
+		if (userSubmit === "") {
+			setErrorState(true);
 		}
 		event.preventDefault();
 		setUserSubmit(autoFill);
 		setAutoFill("");
-
 	};
 	const handleChange = (event) => {
 		setErrorState(false);
 		setAutoFill(event.target.value.trim());
 
 		setShow(true);
-
 	};
-
 
 	const handleSelection = (wordObj) => {
 		//auto fill equals to drop down menu suggestion
@@ -36,7 +32,6 @@ const Form = ({
 		//hides the auto complete suggestions
 		setShow(false);
 	};
-
 
 	return (
 		<>
@@ -64,28 +59,25 @@ const Form = ({
 						value={autoFill}
 						pattern="[a-zA-z]+"
 						placeholder="Start typing a word..."
-
 					/>
 					{/* if autofill doesn't equal empty string show word suggestions in a down drop menu */}
 
-						{
-            autoFill !== "" ?
-              suggestions.map((wordObj) => {
-                  return (
-                    <option
-                      key={v4()}
-                      style={{ display: show ? "block" : "none" }}
-                      onClick={() => handleSelection(wordObj)}
-
-                      value={wordObj.word}
-                      className="color"
-                      tabIndex="0"
-                    >
-                      {wordObj.word}
-                    </option>
-                  );
-                }): null
-              }
+					{autoFill !== ""
+						? suggestions.map((wordObj) => {
+								return (
+									<option
+										key={v4()}
+										style={{ display: show ? "block" : "none" }}
+										onClick={() => handleSelection(wordObj)}
+										value={wordObj.word}
+										className="color"
+										tabIndex="0"
+									>
+										{wordObj.word}
+									</option>
+								);
+						  })
+						: null}
 				</div>
 				{/* api search button */}
 				<button type="submit">Search</button>

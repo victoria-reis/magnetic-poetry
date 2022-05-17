@@ -288,7 +288,7 @@ a {
 button {
   color: #084b6d;
   background-color: transparent;
-  padding: 15px;
+  padding: 18px 36px;
   border: 2px solid #084b6d;
   font-size: 0.8rem;
   font-weight: bold;
@@ -326,6 +326,7 @@ select {
 }
 
 .App {
+  min-height: 100vh;
   background-image: url(../assets/5333978.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -345,6 +346,12 @@ select {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
+.wordCollection li:hover {
+  background-color: gainsboro;
+}
+.wordCollection li:active {
+  background-color: #999;
+}
 
 .magnetic {
   background-color: #FFFFFF;
@@ -356,12 +363,6 @@ select {
   cursor: pointer;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-}
-.magnetic:hover {
-  background-color: gainsboro;
-}
-.magnetic:active {
-  background-color: #999;
 }
 
 .style-1 {
@@ -397,12 +398,6 @@ select {
           transform: rotate(4deg);
   transform: rotate(4deg);
   transform: rotate(4deg);
-}
-
-.plate {
-  width: 600px;
-  height: 300px;
-  background-color: wheat;
 }
 
 .poemBox {
@@ -449,7 +444,7 @@ select {
 .inputOptionsContainer {
   border: 1px solid #2C2C2C;
   position: absolute;
-  z-index: 100;
+  z-index: 1;
 }
 .inputOptionsContainer option {
   background-color: rgba(255, 255, 255, 0.8);
@@ -461,32 +456,45 @@ select {
   background-color: gainsboro;
 }
 
-.customWordCollection {
-  margin: 0 auto;
-  width: 35%;
+.suffixPrefixForms {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+.suffixPrefixForms form {
+  margin: 0 50px;
 }
 
-.customInputContainer {
-  border: 1px solid #2C2C2C;
-  position: absolute;
-  z-index: 1;
+.customWordForm {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-.customInputContainer option {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 0 10px 5px 10px;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+
+.customWordCollection {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.customInputContainer option:hover, .customInputContainer option:active {
-  background-color: gainsboro;
+
+.fWordsCollection {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .poems {

@@ -1,12 +1,8 @@
 //modules
 import { useState } from "react";
+import { rotationRandomizer } from "./Other";
 
-const CustomWordSelect = ({
-	wordPoem,
-	setWordPoem,
-	rotationRandomizer,
-	colorChange,
-}) => {
+const CustomWordSelect = ({ wordPoem, setWordPoem, colorChange }) => {
 	//states
 	const [customInput, setCustomInput] = useState("");
 	const [customTextBox, setCustomTextBox] = useState([]);
@@ -36,51 +32,50 @@ const CustomWordSelect = ({
 		setWordPoem([wordPoem + " " + customWord]);
 	};
 
-  //mapping through custom words
-  return (
-    <div>
-      <div>
-        <form
-          className="searchForm"
-          onSubmit={(event) => {
-            handleCustomSubmit(event);
-          }}
-        >
-          <label htmlFor="search">Custom text</label>
-          <div className="customInputContainer">
-            <input
-              type="search"
-              id="search"
-              onChange={(e) => {
-                handleCustomChange(e);
-              }}
-              value={customInput}
-              placeholder="Add a word"
-            />
-          </div>
-          <button type="submit">Add</button>
-        </form>
-      </div>
+	//mapping through custom words
+	return (
+		<>
+			<form
+				// className="searchForm"
+				onSubmit={(event) => {
+					handleCustomSubmit(event);
+				}}
+				className="customWordForm"
+			>
+				{/* <div className="customInputContainer"> */}
+				<label htmlFor="search" className="sr-only">
+					Custom text
+				</label>
+				<input
+					type="search"
+					id="search"
+					onChange={(e) => {
+						handleCustomChange(e);
+					}}
+					value={customInput}
+					placeholder="Add a custom word"
+				/>
+				{/* </div> */}
+				<button type="submit">Add</button>
+			</form>
 
 			<div className="customWordCollection">
-				{customUserSubmit !== false ? (
-					customTextBox.map((customWord, index) => {
-						return (
-							<div
-								key={index}
-								onClick={() => handleCustomSelection(customWord)}
-								className={rotationRandomizer()}
-								style={{ color: colorChange }}
-							>
-								{customWord}
-							</div>
-						);
-					})
-				) : (
-					<p>Empty. Please type in a word to add.</p>
-				)}
+				{customUserSubmit !== false
+					? customTextBox.map((customWord, index) => {
+							return (
+								<div
+									key={index}
+									onClick={() => handleCustomSelection(customWord)}
+									className={rotationRandomizer()}
+									style={{ color: colorChange }}
+								>
+									{customWord}
+								</div>
+							);
+					  })
+					: null}
 			</div>
-		</div>
+		</>
 	);
 };
 
