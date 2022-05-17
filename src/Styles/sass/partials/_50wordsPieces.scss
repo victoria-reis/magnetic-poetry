@@ -1,11 +1,9 @@
 .wordCollection {
-	// border: 1px solid red;
-	margin: 0 auto;
+	margin: 20px auto;
 	width: 90%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-  margin-top: 50px;
 	li {
 		&:hover {
 			background-color: gainsboro;

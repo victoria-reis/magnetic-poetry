@@ -1,0 +1,42 @@
+.poemDisplayContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.poemColorFont {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.poemContent {
+	margin-top: 70px;
+}
+
+.poemForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.poemDisplay {
+	min-width: 40vw;
+	margin: 0px 40px 0px;
+}
+
+.poemSubmit {
+	margin-top: 10px;
+	align-self: center;
+}
+
+.poemButtons {
+	display: flex;
+	flex-direction: column;
+}
+
+.poemClearAll {
+	margin-bottom: 3px;
+}

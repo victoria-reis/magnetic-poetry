@@ -57,7 +57,11 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem, colorChange }) => {
 				<label htmlFor="functionWords" className="sr-only">
 					Select a function word. Example: they, somebody, don't, above, etc.
 				</label>
-				<select name="functionWords" id="functionWords">
+				<select
+					name="functionWords"
+					id="functionWords"
+					title="Select a function word. Example: they, somebody, don't, above, etc."
+				>
 					<option value="">Select a function word</option>
 					{FunctionWords.sort().map((word) => {
 						if (
@@ -90,7 +94,11 @@ const FunctionWordsSelect = ({ setWordPoem, wordPoem, colorChange }) => {
 				<label htmlFor="suffixPrefix" className="sr-only">
 					Select a suffix or prefix. Example: un-, auto-, -able, -cy, etc.
 				</label>
-				<select name="suffixPrefix" id="suffixPrefix">
+				<select
+					name="suffixPrefix"
+					id="suffixPrefix"
+					title="Select a suffix or prefix. Example: un-, auto-, -able, -cy, etc."
+				>
 					<option value="">Select a prefix or suffix</option>
 					{SuffixPrefixWords.sort().map((word) => {
 						return (

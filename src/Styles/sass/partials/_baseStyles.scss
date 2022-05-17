@@ -38,7 +38,7 @@ p {
 button {
 	color: $darkgreen;
 	background-color: transparent;
-	padding: 10px 30px;
+	padding: 8px 20px;
 	border: 2px solid $darkgreen;
 	text-align: center;
 	cursor: pointer;
@@ -76,5 +76,4 @@ select {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-  min-height: 100vh;
 }

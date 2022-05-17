@@ -59,6 +59,7 @@ const Form = ({
 						value={autoFill}
 						pattern="[a-zA-z]+"
 						placeholder="Start typing a word..."
+						title="Search for a word"
 					/>
 					{/* if autofill doesn't equal empty string show word suggestions in a down drop menu */}
 

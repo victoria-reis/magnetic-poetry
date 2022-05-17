@@ -239,6 +239,8 @@ html {
 body {
   font-size: 125%;
   font-family: "Kanit", sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .color {
@@ -308,7 +310,7 @@ p {
 button {
   color: #001510;
   background-color: transparent;
-  padding: 10px 30px;
+  padding: 8px 20px;
   border: 2px solid #001510;
   text-align: center;
   cursor: pointer;
@@ -349,11 +351,10 @@ select {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 100vh;
 }
 
 .wordCollection {
-  margin: 0 auto;
+  margin: 20px auto;
   width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -363,7 +364,6 @@ select {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin-top: 50px;
 }
 .wordCollection li:hover {
   background-color: gainsboro;
@@ -419,10 +419,6 @@ select {
   transform: rotate(4deg);
 }
 
-.poemBox {
-  display: none;
-}
-
 .poemDisplay {
   margin: 0 auto;
   width: 80%;
@@ -440,12 +436,12 @@ select {
   margin: 40px auto;
 }
 .searchForm input {
+  outline: none;
   padding: 10px;
   width: 300px;
 }
 .searchForm button {
   margin-left: auto;
-  width: 80px;
   border: 1px solid #2C2C2C;
 }
 
@@ -478,23 +474,6 @@ select {
   margin: 0 50px;
 }
 
-.customWordForm {
-  margin: 0 auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.customWordCollection {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 .fWordsCollection {
   width: 100%;
   display: -webkit-box;
@@ -503,25 +482,130 @@ select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-height: 47px;
+  margin: 15px auto;
 }
 
 .customWordCollection {
-  margin: 0 auto;
+  margin: 10px auto;
+  min-height: 47px;
   width: 35%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.customWordForm {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.customWordForm input {
+  padding: 10px;
+}
+
+.poemDisplayContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.poemColorFont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.customInputContainer {
-  border: 1px solid #2C2C2C;
-  position: absolute;
-  z-index: 1;
+.poemContent {
+  margin-top: 70px;
+}
+
+.poemForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.poemDisplay {
+  min-width: 40vw;
+  margin: 0px 40px 0px;
+}
+
+.poemSubmit {
+  margin-top: 10px;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.poemButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.poemClearAll {
+  margin-bottom: 3px;
+}
+
+.navBar {
+  margin: 20px auto;
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.navBar a {
+  color: inherit;
+  padding: 10px 15px;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 2px 0 #999;
+          box-shadow: 0 1px 2px 0 #999;
+}
+.navBar a:hover {
+  background-color: gainsboro;
+}
+.navBar a:active {
+  background-color: #999;
 }
 
 .poems {
