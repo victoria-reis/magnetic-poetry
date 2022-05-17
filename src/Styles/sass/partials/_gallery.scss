@@ -1,6 +1,6 @@
 .navBar {
 	// border: 1px solid red;
-	margin: 70px auto;
+	margin: 5px auto;
 	width: 35%;
 	display: flex;
 	justify-content: space-between;
@@ -20,14 +20,6 @@
 		a {
 			color: inherit;
 			padding: 15px;
-
-			// &:hover {
-			// 	// background-color: gainsboro;
-			// }
-
-			// &:active {
-			// 	// background-color: #999;
-			// }
 		}
 	}
 }
