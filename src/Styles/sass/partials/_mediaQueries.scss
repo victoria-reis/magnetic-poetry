@@ -1,10 +1,12 @@
 @media (max-width: 950px) {
 	h1 {
-		font-size: 4rem;
+		width: 85%;
+		padding: 80px;
+		font-size: 3rem;
 	}
 
 	.navBar {
-		width: 45%;
+		width: 70%;
 	}
 
 	.wordCollection {
@@ -47,6 +49,11 @@
 @media (max-width: 550px) {
 	.wrapper {
 		width: 95%;
+	}
+
+	.navBar {
+		width: 70%;
+		justify-content: center;
 	}
 
 	.poemDisplay {
