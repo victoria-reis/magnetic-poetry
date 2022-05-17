@@ -57,9 +57,6 @@ const Gallery = () => {
 					? poems.map((poem) => {
 							return (
 								<li key={poem.key} className="poems">
-									{/* <div style={{ color: poem.color, fontFamily: poem.font }}>
-										{poem.name}
-									</div> */}
 									{poem.name[0]
 										.trim()
 										.split(" ")

@@ -3,16 +3,14 @@
 	height: 47px;
 	display: flex;
 	margin: 40px auto;
-	// border: 2px solid red;
 	input {
-		// border: none;
+		outline: none;
 		padding: 10px;
 		width: 300px;
 	}
 
 	button {
 		margin-left: auto;
-		width: 80px;
 		border: 1px solid $black;
 	}
 }
@@ -42,19 +40,10 @@
 	}
 }
 
-.customWordForm {
-	margin: 0 auto;
-	width: fit-content;
-}
-
-.customWordCollection {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-}
-
 .fWordsCollection {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	min-height: 47px;
+	margin: 15px auto;
 }

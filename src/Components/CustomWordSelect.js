@@ -54,6 +54,7 @@ const CustomWordSelect = ({ wordPoem, setWordPoem, colorChange }) => {
 					}}
 					value={customInput}
 					placeholder="Add a custom word"
+					title="Add a custom word"
 				/>
 				{/* </div> */}
 				<button type="submit">Add</button>

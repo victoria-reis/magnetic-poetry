@@ -10,15 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 //function from a component ./Other
 import { rotationRandomizer } from "./Other";
-import CustomWordSelect from "./CustomWordSelect";
 
 const GenerateWords = ({
 	userSubmit,
 	wordPoem,
 	setWordPoem,
 	errorState,
-	setErrorState,
-	setUserSubmit,
 	colorChange,
 	setColourChange,
 }) => {
@@ -44,7 +41,6 @@ const GenerateWords = ({
 				.then((response) => {
 					const array = response.data;
 					setWordCollection(response.data);
-					setUserSubmit("");
 					if (array.length === 0) {
 						toast.error("No words found.");
 					}
@@ -150,12 +146,6 @@ const GenerateWords = ({
 	//the final form, the display form, that will have the words that were clicked to be displayed onto the grey background. Color and fonts applied to them, depending on the selection.
 	return (
 		<>
-			{/* <CustomWordSelect
-				setWordPoem={setWordPoem}
-				wordPoem={wordPoem}
-				rotationRandomizer={rotationRandomizer}
-				colorChange={colorChange}
-			/> */}
 			<ul className="wordCollection">
 				{errorState !== false ? (
 					wordCollection.map((wordCollection) => {
@@ -176,9 +166,6 @@ const GenerateWords = ({
 			</ul>
 
 			<div className="poemDisplayContainer">
-
-				{/* {errorState ? <p>no data from api</p> : <p>good</p>} */}
-
 				<div className="poemColorFont">
 					<form>
 						<select name="ColorChange" id="colorChange" onChange={handleChange}>
@@ -219,20 +206,16 @@ const GenerateWords = ({
 							})}
 						</select>
 					</form>
-
 				</div>
-
-
-
 
 				<div className="poemContent">
 					<form
-            className="poemForm"
+						className="poemForm"
 						onSubmit={(event) => {
 							handleSubmit(event);
 						}}
 					>
-						<div className="poemDisplay">
+						<div className="poemDisplay" aria-hidden="true">
 							{wordPoem[0]
 								? wordPoem[0]
 										.trim()
@@ -255,22 +238,24 @@ const GenerateWords = ({
 						<input
 							id="poem"
 							value={wordPoem}
-							className="poemBox"
+							className="sr-only"
 							onChange={handleSelection}
 							placeholder="Select the words above to create a poem!"
 							style={{ color: colorChange, fontFamily: fontChange }}
 						/>
-          <button  className="poemSubmit" type="submit">Submit</button>
+						<button className="poemSubmit" type="submit">
+							Submit
+						</button>
 					</form>
 				</div>
 
-        <div className="poemButtons">
-          <button className="poemClearAll" onClick={handleClear}>ClearAll</button>
-          <button onClick={handleOne}>Clear Last Word</button>
-        </div>
-
+				<div className="poemButtons">
+					<button className="poemClearAll" onClick={handleClear}>
+						ClearAll
+					</button>
+					<button onClick={handleOne}>Clear Last Word</button>
+				</div>
 			</div>
-
 		</>
 	);
 };

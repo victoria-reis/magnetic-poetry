@@ -1,3 +1,24 @@
+.navBar {
+	// border: 1px solid red;
+	margin: 20px auto;
+	width: 35%;
+	display: flex;
+	justify-content: space-between;
+	a {
+		color: inherit;
+		padding: 10px 15px;
+		background-color: white;
+		box-shadow: 0 1px 2px 0 #999;
+
+		&:hover {
+			background-color: gainsboro;
+		}
+		&:active {
+			background-color: #999;
+		}
+	}
+}
+
 .poems {
 	display: flex;
 	flex-wrap: wrap;
