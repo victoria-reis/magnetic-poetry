@@ -107,10 +107,12 @@ const GenerateWords = ({
 	};
 
 	const data1 = [
+		{ name: "purple" },
 		{ name: "blue" },
 		{ name: "green" },
 		{ name: "yellow" },
 		{ name: "orange" },
+		{ name: "red" }
 	];
 
 	//see what color was selected
@@ -118,8 +120,15 @@ const GenerateWords = ({
 		setColourChange(event.target.value);
 	};
 
-	const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-	//value = a.name = red, yellow, green, blue
+	//purple to red
+	const colors = [
+		"#c47aef",
+		"#0284f6",
+		"#03c5a2",
+		"#ffba25",
+		"#ff7f3e",
+		"#f60202"]
+
 
 	const data2 = [
 		{ name: "Times New Roman" },
