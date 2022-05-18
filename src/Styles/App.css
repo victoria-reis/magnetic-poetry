@@ -754,6 +754,11 @@ h1 {
     width: 95%;
   }
 
+  h1 {
+    font-size: 2.5rem;
+    padding: 50px;
+  }
+
   .navBar {
     width: 70%;
     -webkit-box-pack: center;
@@ -794,8 +799,8 @@ h1 {
   }
 
   h1 {
-    background-image: none;
-    padding: 50px 25px 50px;
+    width: 80%;
+    padding: 40px;
     text-align: center;
     font-size: 2rem;
   }
