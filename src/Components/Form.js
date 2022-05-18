@@ -8,11 +8,10 @@ const Form = ({
 	autoFill,
 	show,
 	suggestions,
-	userSubmit,
 	setErrorState,
 }) => {
 	const handleSubmit = (event) => {
-		if (userSubmit === "") {
+		if (autoFill === "") {
 			setErrorState(true);
 		}
 		event.preventDefault();

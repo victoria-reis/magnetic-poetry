@@ -20,7 +20,6 @@ const Gallery = () => {
 		onValue(dbRef, (response) => {
 			const newState = [];
 			const data = response.val();
-			console.log("response", data);
 
 			for (let key in data) {
 				// pushing the values from the object into our newState array
@@ -32,7 +31,6 @@ const Gallery = () => {
 				});
 			}
 			// here we use Firebase's .val() method to parse our database info the way we want it
-			console.log(response.val());
 			newState.reverse();
 			setPoems(newState);
 		});

@@ -51,7 +51,7 @@ const CreatePoem = () => {
 		}
 	}, [autoFill]);
 
-	//parent component that passes states to respective child components through props
+	// Parent component that passes states to respective child components through props
 	return (
 		<section>
 			<Form
@@ -63,7 +63,6 @@ const CreatePoem = () => {
 				CreatePoem={CreatePoem}
 				suggestions={suggestions}
 				setErrorState={setErrorState}
-				userSubmit={userSubmit}
 			/>
 
 			<FunctionWordsSelect

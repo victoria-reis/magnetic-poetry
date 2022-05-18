@@ -28,7 +28,6 @@ const CustomWordSelect = ({ wordPoem, setWordPoem, colorChange }) => {
 
 	//adding the word to poemdisplay + empty string
 	const handleCustomSelection = (customWord) => {
-		console.log(customWord);
 		setWordPoem([wordPoem + " " + customWord]);
 	};
 
@@ -42,7 +41,6 @@ const CustomWordSelect = ({ wordPoem, setWordPoem, colorChange }) => {
 				}}
 				className="customWordForm"
 			>
-				{/* <div className="customInputContainer"> */}
 				<label htmlFor="search" className="sr-only">
 					Custom text
 				</label>
@@ -56,7 +54,6 @@ const CustomWordSelect = ({ wordPoem, setWordPoem, colorChange }) => {
 					placeholder="Add a custom word"
 					title="Add a custom word"
 				/>
-				{/* </div> */}
 				<button type="submit">Add</button>
 			</form>
 

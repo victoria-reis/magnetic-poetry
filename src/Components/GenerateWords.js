@@ -65,18 +65,15 @@ const GenerateWords = ({
 
 	//submit button for the 2nd form that will push the poem to firebase.
 	const handleSubmit = (event) => {
-		console.log("event", event);
 		event.preventDefault();
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
-		console.log("wordPoem", wordPoem);
 		//pushing poem, styles and fonts
 		const poem = {
 			wordPoem: wordPoem,
 			style: event.target[0].style.color,
 			font: event.target[0].style.fontFamily,
 		};
-		console.log("poem", poem);
 		//push whatever the user has typed
 		if (poem.wordPoem.length !== 0) {
 			push(dbRef, poem);
@@ -90,7 +87,6 @@ const GenerateWords = ({
 	const handleClear = (wordPoem) => {
 		wordPoem.preventDefault();
 		setWordPoem([]);
-		console.log("setWordPoem", setWordPoem);
 	};
 
 	//checking if the input is empty, if it is then split each word into separate substrings in the array
@@ -153,6 +149,7 @@ const GenerateWords = ({
 	//first thing in the form is mapping through each color with data1 array and then mapping through each font with data2 array.
 	//then you map through each of the 50 words generated from the API and assign a style of the color/font that was selected from the dropdown.
 	//the final form, the display form, that will have the words that were clicked to be displayed onto the grey background. Color and fonts applied to them, depending on the selection.
+
 	return (
 		<>
 			<ul className="wordCollection">
@@ -229,7 +226,6 @@ const GenerateWords = ({
 									.trim()
 									.split(" ")
 									.map((word) => {
-										console.log(word);
 										return (
 											<p
 												key={v4()}
