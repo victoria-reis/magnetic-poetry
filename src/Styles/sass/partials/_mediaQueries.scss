@@ -15,9 +15,6 @@
 
 	.poemDisplayContainer {
 		flex-direction: column;
-		// display: flex;
-		// justify-content: center;
-		// align-items: center;
 		width: 100%;
 	}
 
@@ -27,18 +24,10 @@
 	}
 
 	.poemColorFont {
-		// display: flex;
 		flex-direction: row;
-		// justify-content: center;
-		// align-items: center;
-		// select {
-		// 	margin: 1.5px;
-		// 	width: 195px;
-		// }
 	}
 
 	.poemButtons {
-		// display: flex;
 		flex-direction: row;
 		button {
 			margin: 10px 2px;
@@ -50,7 +39,7 @@
 	.wrapper {
 		width: 95%;
 	}
-	
+
 	h1 {
 		font-size: 2.5rem;
 		padding: 50px;
@@ -80,9 +69,9 @@
 }
 
 @media (max-width: 440px) {
-  .wrapper {
-    width: 100%;
-  }
+	.wrapper {
+		width: 95%;
+	}
 
 	.searchForm {
 		input {
@@ -94,48 +83,46 @@
 		}
 	}
 
-  h1 {
-	width: 80%;
-	padding: 40px;
-    text-align: center;
-    font-size: 2rem;
-  }
+	h1 {
+		width: 80%;
+		padding: 40px;
+		text-align: center;
+		font-size: 2rem;
+	}
 
-  .suffixPrefixForms {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
+	.suffixPrefixForms {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		text-align: center;
 
-    > * {
-    padding-bottom: 10px;
-    }
+		> * {
+			padding-bottom: 10px;
+		}
 
-    form > * {
-    margin-bottom: 10px;
-    }
-  }
+		form > * {
+			margin-bottom: 10px;
+		}
+	}
 
-  .customWordForm {
-    display: flex;
-    flex-direction: column;
-    button {
-      margin-top: 10px;
-    }
-  }
+	.customWordForm {
+		display: flex;
+		flex-direction: column;
+		button {
+			margin-top: 10px;
+		}
+	}
 
-  .poemDisplay{
-    text-align: center;
-  }
+	.poemDisplay {
+		text-align: center;
+	}
 
-  .poemColorFont {
-    flex-direction: column;
-  }
+	.poemColorFont {
+		flex-direction: column;
+	}
 
-  .poemButtons{
-    flex-direction: column;
-    margin-top: 40px;
-  }
+	.poemButtons {
+		flex-direction: column;
+		margin-top: 40px;
+	}
 }
-
-

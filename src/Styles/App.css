@@ -278,10 +278,6 @@ button {
   padding: 0;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   background-image: url(../assets/5333978.jpg);
   background-repeat: no-repeat;
@@ -790,7 +786,7 @@ h1 {
 }
 @media (max-width: 440px) {
   .wrapper {
-    width: 100%;
+    width: 95%;
   }
 
   .searchForm input {
