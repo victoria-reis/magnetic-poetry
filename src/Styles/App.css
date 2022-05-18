@@ -422,6 +422,44 @@ h1 {
   width: 65%;
 }
 
+.navBar {
+  margin: 5px auto;
+  width: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.navBar li {
+  background-image: url(../assets/detailedleafoutline.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 30px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.navBar li span {
+  display: block;
+}
+.navBar li a {
+  color: inherit;
+  padding: 15px;
+}
+.navBar li a:hover, .navBar li a:active {
+  color: #48AA31;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .searchForm {
   max-width: 400px;
   height: 47px;
@@ -603,40 +641,6 @@ h1 {
 
 .poemClearAll {
   margin-bottom: 3px;
-}
-
-.navBar {
-  margin: 5px auto;
-  width: 45%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.navBar li {
-  background-image: url(../assets/detailedleafoutline.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  padding: 30px;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.navBar li span {
-  display: block;
-}
-.navBar li a {
-  color: inherit;
-  padding: 15px;
 }
 
 .poems {

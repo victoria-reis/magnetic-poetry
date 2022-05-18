@@ -1,0 +1,30 @@
+.navBar {
+	// border: 1px solid red;
+	margin: 5px auto;
+	width: 45%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	li {
+		background-image: url(../assets/detailedleafoutline.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		padding: 30px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		span {
+			display: block;
+		}
+		a {
+			color: inherit;
+			padding: 15px;
+      &:hover, &:active{
+      color: #48AA31;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      }
+
+		}
+  }
+}
