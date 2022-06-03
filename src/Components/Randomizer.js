@@ -1,4 +1,3 @@
-
 //function used to style each word to make them look like actual magnets
 export const rotationRandomizer = () => {
 	const randomNum = Math.floor(Math.random() * 10);

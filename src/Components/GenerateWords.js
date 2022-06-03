@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+	hexColors,
+	colorNames,
+	fontNames,
+	fonts,
+} from "../Data/ColorsAndFonts";
 
 //function from a component ./Other
 import { rotationRandomizer } from "./Randomizer";
@@ -102,54 +108,19 @@ const GenerateWords = ({
 		});
 	};
 
-	const data1 = [
-		{ name: "purple" },
-		{ name: "blue" },
-		{ name: "green" },
-		{ name: "yellow" },
-		{ name: "orange" },
-		{ name: "red" }
-	];
-
 	//see what color was selected
 	const handleChange = (event) => {
 		setColourChange(event.target.value);
 	};
-
-	//purple to red
-	const colors = [
-		"#c47aef",
-		"#0284f6",
-		"#03c5a2",
-		"#ffba25",
-		"#ff7f3e",
-		"#f60202"]
-
-
-	const data2 = [
-		{ name: "Times New Roman" },
-		{ name: "Arial" },
-		{ name: "Trebuchet MS" },
-		{ name: "Segoe UI" },
-		{ name: "Cursive" },
-	];
 
 	//function for what font was selected
 	const handleFontChange = (event) => {
 		setFontChange(event.target.value);
 	};
 
-	const fonts = [
-		"Times New Roman, Times, serif",
-		"Arial, Helvetica, sans-serif",
-		"Trebuchet MS, Lucida Sans Unicode, Lucida Grande, Lucida Sans, Arial, sans-serif",
-		"Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
-		"Cursive",
-	];
 	//first thing in the form is mapping through each color with data1 array and then mapping through each font with data2 array.
 	//then you map through each of the 50 words generated from the API and assign a style of the color/font that was selected from the dropdown.
 	//the final form, the display form, that will have the words that were clicked to be displayed onto the grey background. Color and fonts applied to them, depending on the selection.
-
 	return (
 		<>
 			<ul className="wordCollection">
@@ -177,12 +148,12 @@ const GenerateWords = ({
 						<select name="ColorChange" id="colorChange" onChange={handleChange}>
 							<option value="">Select a Color</option>
 
-							{data1.map((color, index) => {
+							{colorNames.map((color, index) => {
 								return (
 									<option
 										key={index}
-										value={colors[index]}
-										style={{ color: colors[index] }}
+										value={hexColors[index]}
+										style={{ color: hexColors[index] }}
 									>
 										{color.name}{" "}
 									</option>
@@ -199,7 +170,7 @@ const GenerateWords = ({
 						>
 							<option value="">Select a Font</option>
 
-							{data2.map((font, index) => {
+							{fontNames.map((font, index) => {
 								return (
 									<option
 										key={index}
